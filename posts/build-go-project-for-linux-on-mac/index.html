@@ -8,13 +8,13 @@
 		<title>【Golang】Mac下编译可以在linux下运行的程序</title>
 
 		
-		<link rel="stylesheet" href="https://torans.github.io/css/colors-light.min.1d48e4c2124c6c9dac31b2abe100cace7dd90b4e11888c91209d003a36860c93.css">
+		<link rel="stylesheet" href="https://lanqiu.tech/css/colors-light.min.1d48e4c2124c6c9dac31b2abe100cace7dd90b4e11888c91209d003a36860c93.css">
 
 		
 	</head>
 	<body>
 		<header id="header">
-			<h1 style="font-weight:bolder"><a href="https://torans.github.io">兰秋十六</a></h1>
+			<h1 style="font-weight:bolder"><a href="https://lanqiu.tech">兰秋十六</a></h1>
 			<p>希望钱包里的人民币们相亲相爱，生下许多儿女！</p>
 		</header>
 
@@ -49,7 +49,7 @@
 			<div id="content">
 				
 	<article class="post">
-		<h1><a href="https://torans.github.io/posts/build-go-project-for-linux-on-mac/">【Golang】Mac下编译可以在linux下运行的程序</a> </h1>
+		<h1><a href="https://lanqiu.tech/posts/build-go-project-for-linux-on-mac/">【Golang】Mac下编译可以在linux下运行的程序</a> </h1>
 
 		<div class="post-content"><p>在mac下直接使用go build编译出来的文件在linux下无法运行，因此需要使用其他方法编译，执行下面的命令即可：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> GOOS<span style="color:#f92672">=</span>linux GOARCH<span style="color:#f92672">=</span>amd64 go build main.go

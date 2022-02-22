@@ -2,27 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on 兰秋十六</title>
-    <link>https://torans.github.io/posts/</link>
+    <link>https://lanqiu.tech/posts/</link>
     <description>Recent content in Posts on 兰秋十六</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 21 Feb 2022 22:27:54 +0800</lastBuildDate><atom:link href="https://torans.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Feb 2022 22:27:54 +0800</lastBuildDate><atom:link href="https://lanqiu.tech/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>【Golang】Mac下编译可以在linux下运行的程序</title>
-      <link>https://torans.github.io/posts/build-go-project-for-linux-on-mac/</link>
+      <link>https://lanqiu.tech/posts/build-go-project-for-linux-on-mac/</link>
       <pubDate>Mon, 21 Feb 2022 22:27:54 +0800</pubDate>
       
-      <guid>https://torans.github.io/posts/build-go-project-for-linux-on-mac/</guid>
+      <guid>https://lanqiu.tech/posts/build-go-project-for-linux-on-mac/</guid>
       <description>在mac下直接使用go build编译出来的文件在linux下无法运行，因此需要使用其他方法编译，执行下面的命令即可：
 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.go 该命令会下载相应的包,然后可以看到编译成功。</description>
     </item>
     
     <item>
       <title>开篇日记</title>
-      <link>https://torans.github.io/posts/first/</link>
+      <link>https://lanqiu.tech/posts/first/</link>
       <pubDate>Mon, 21 Feb 2022 17:53:10 +0800</pubDate>
       
-      <guid>https://torans.github.io/posts/first/</guid>
+      <guid>https://lanqiu.tech/posts/first/</guid>
       <description> 也不知道是第几次搭建独立博客了，希望这是最后一次折腾了。 多年的技术从业经历使我早已明白，作为靠技术技能吃饭的我，必须不断通过 学习来提升自己，否则终将被淘汰。
 可不得不承认的是，在科技飞速发展的 今天，随着年龄的增长，以前的碎片化学习方式必定显得愈发吃力。所以，我 需要一个东西来记录我的学习记录，同时也希望能分享有意思的内容给各位朋友。 这就是我思考再三，还是决定重开博客的原因。
 go!go!
@@ -31,10 +31,10 @@ go!go!
     
     <item>
       <title>文章归档</title>
-      <link>https://torans.github.io/archives/</link>
+      <link>https://lanqiu.tech/archives/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://torans.github.io/archives/</guid>
+      <guid>https://lanqiu.tech/archives/</guid>
       <description>历史文章按照年月归档.</description>
     </item>
     

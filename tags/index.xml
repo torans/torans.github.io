@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on 兰秋十六</title>
-    <link>https://torans.github.io/tags/</link>
+    <link>https://lanqiu.tech/tags/</link>
     <description>Recent content in Tags on 兰秋十六</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 21 Feb 2022 22:27:54 +0800</lastBuildDate><atom:link href="https://torans.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Feb 2022 22:27:54 +0800</lastBuildDate><atom:link href="https://lanqiu.tech/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>golang</title>
-      <link>https://torans.github.io/tags/golang/</link>
+      <link>https://lanqiu.tech/tags/golang/</link>
       <pubDate>Mon, 21 Feb 2022 22:27:54 +0800</pubDate>
       
-      <guid>https://torans.github.io/tags/golang/</guid>
+      <guid>https://lanqiu.tech/tags/golang/</guid>
       <description></description>
     </item>
     
