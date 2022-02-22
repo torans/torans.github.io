@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>golang on 兰秋十六</title>
+    <link>https://torans.github.io/tags/golang/</link>
+    <description>Recent content in golang on 兰秋十六</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 21 Feb 2022 22:27:54 +0800</lastBuildDate><atom:link href="https://torans.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【Golang】Mac下编译可以在linux下运行的程序</title>
+      <link>https://torans.github.io/posts/build-go-project-for-linux-on-mac/</link>
+      <pubDate>Mon, 21 Feb 2022 22:27:54 +0800</pubDate>
+      
+      <guid>https://torans.github.io/posts/build-go-project-for-linux-on-mac/</guid>
+      <description>在mac下直接使用go build编译出来的文件在linux下无法运行，因此需要使用其他方法编译，执行下面的命令即可：
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.go 该命令会下载相应的包,然后可以看到编译成功。</description>
+    </item>
+    
+  </channel>
+</rss>
