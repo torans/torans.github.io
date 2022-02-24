@@ -2,22 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://lanqiu.tech/tags/k3s/</loc>
+    <lastmod>2022-02-24T15:39:20+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/tags/kubernetes/</loc>
+    <lastmod>2022-02-24T15:39:20+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/tags/monitor/</loc>
+    <lastmod>2022-02-24T15:39:20+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/posts/</loc>
+    <lastmod>2022-02-24T15:39:20+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/tags/prometheus/</loc>
+    <lastmod>2022-02-24T15:39:20+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/tags/</loc>
+    <lastmod>2022-02-24T15:39:20+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/</loc>
+    <lastmod>2022-02-24T15:39:20+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/posts/local_prometheus_to_monitor_k8s_or_k3s_cluster/</loc>
+    <lastmod>2022-02-24T15:39:20+08:00</lastmod>
+  </url><url>
     <loc>https://lanqiu.tech/tags/</loc>
     <lastmod>2022-02-21T22:42:59+08:00</lastmod>
   </url><url>
     <loc>https://lanqiu.tech/tags/golang/</loc>
     <lastmod>2022-02-21T22:27:54+08:00</lastmod>
   </url><url>
-    <loc>https://lanqiu.tech/posts/</loc>
-    <lastmod>2022-02-21T22:27:54+08:00</lastmod>
-  </url><url>
-    <loc>https://lanqiu.tech/tags/</loc>
-    <lastmod>2022-02-21T22:27:54+08:00</lastmod>
-  </url><url>
     <loc>https://lanqiu.tech/posts/build-go-project-for-linux-on-mac/</loc>
-    <lastmod>2022-02-21T22:27:54+08:00</lastmod>
-  </url><url>
-    <loc>https://lanqiu.tech/</loc>
     <lastmod>2022-02-21T22:27:54+08:00</lastmod>
   </url><url>
     <loc>https://lanqiu.tech/posts/first/</loc>
