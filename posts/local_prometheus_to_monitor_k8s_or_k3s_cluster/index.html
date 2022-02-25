@@ -389,6 +389,24 @@
   </a>
 </h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl get sa prometheus  -n monitor  -o yaml
+</code></pre></div><ul>
+<li>获取密文名称：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">...
+secrets:
+- name: prometheus-token-fmddk
+</code></pre></div><ul>
+<li>通过密文名称获取对应token:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl  describe secret prometheus-token-fmddk -n monitor 
+
+Name:         prometheus-token-fmddk
+...
+Data
+====
+ca.crt:     570 bytes
+namespace:  7 bytes
+token:      &lt;token 字符串&gt;
 </code></pre></div><p>上面的token 就是我们用于访问APIServer 的数据，将token保存为k3s.token的文本文件中，放置于prometheus.yaml同级目录中。</p>
 <h3 id="添加prometheus-job">
   添加prometheus job
