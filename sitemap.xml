@@ -2,6 +2,36 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://lanqiu.tech/categories/</loc>
+    <lastmod>2022-03-12T15:24:45+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/posts/</loc>
+    <lastmod>2022-03-12T15:24:45+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/categories/proxy/</loc>
+    <lastmod>2022-03-12T15:24:45+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/tags/proxypool/</loc>
+    <lastmod>2022-03-12T15:24:45+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/tags/ss/</loc>
+    <lastmod>2022-03-12T15:24:45+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/tags/</loc>
+    <lastmod>2022-03-12T15:24:45+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/tags/vmess/</loc>
+    <lastmod>2022-03-12T15:24:45+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/</loc>
+    <lastmod>2022-03-12T15:24:45+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/posts/get_free_proxies/</loc>
+    <lastmod>2022-03-12T15:24:45+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/</loc>
+    <lastmod>2022-03-12T15:24:45+08:00</lastmod>
+  </url><url>
     <loc>https://lanqiu.tech/tags/k3s/</loc>
     <lastmod>2022-02-24T15:39:20+08:00</lastmod>
   </url><url>
@@ -11,16 +41,7 @@
     <loc>https://lanqiu.tech/tags/monitor/</loc>
     <lastmod>2022-02-24T15:39:20+08:00</lastmod>
   </url><url>
-    <loc>https://lanqiu.tech/posts/</loc>
-    <lastmod>2022-02-24T15:39:20+08:00</lastmod>
-  </url><url>
     <loc>https://lanqiu.tech/tags/prometheus/</loc>
-    <lastmod>2022-02-24T15:39:20+08:00</lastmod>
-  </url><url>
-    <loc>https://lanqiu.tech/tags/</loc>
-    <lastmod>2022-02-24T15:39:20+08:00</lastmod>
-  </url><url>
-    <loc>https://lanqiu.tech/</loc>
     <lastmod>2022-02-24T15:39:20+08:00</lastmod>
   </url><url>
     <loc>https://lanqiu.tech/posts/local_prometheus_to_monitor_k8s_or_k3s_cluster/</loc>
@@ -39,8 +60,6 @@
     <lastmod>2022-02-21T17:53:10+08:00</lastmod>
   </url><url>
     <loc>https://lanqiu.tech/authors/</loc>
-  </url><url>
-    <loc>https://lanqiu.tech/categories/</loc>
   </url><url>
     <loc>https://lanqiu.tech/series/</loc>
   </url><url>

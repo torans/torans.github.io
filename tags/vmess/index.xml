@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vmess on 兰秋十六</title>
+    <link>https://lanqiu.tech/tags/vmess/</link>
+    <description>Recent content in vmess on 兰秋十六</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>cn</language>
+    <lastBuildDate>Sat, 12 Mar 2022 15:24:45 +0800</lastBuildDate><atom:link href="https://lanqiu.tech/tags/vmess/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>核弹级教程：手把手教你白嫖上百个订阅节点</title>
+      <link>https://lanqiu.tech/posts/get_free_proxies/</link>
+      <pubDate>Sat, 12 Mar 2022 15:24:45 +0800</pubDate>
+      
+      <guid>https://lanqiu.tech/posts/get_free_proxies/</guid>
+      <description>名词解释    爱折腾的小伙伴，对节点、Clash、Surge 之类的词都再熟悉不过了吧？ 梯子的工具随手可见，但是节点——如果不（yi）想（mao）破（bu）费（ba）的话——找起来并不是那么顺利。 因为大部分的免费节点，都需要挂上梯子去搜，陷入了无限循环。所以今天给大家介绍一个快速、免费、持久地获取节点订阅链接的终极解决方案！ PS：本文只提供思路，和具体操作，没有现成的链接。
+总体思路    proxypool 的大名，想必大家都听说过。这是一个 go 语言开发的节点爬虫，部署在服务器上就能爬取各种来源的免费节点，并且提供测速、筛选等功能。
+那么我们在没有服务器、不会自己搭建的时候，是不是可以白嫖别人的呢？答案是肯定的！
+方法 1：    proxypool 默认使用的是 12580 端口，所以我们只要大量扫描 IP 端口，然后逐个尝试，总会抓到很多个 IP。
+方法 2：    proxypool 前端页面的 title，默认是 “Free Proxies”，所以搜索这个关键字，也可以找到无数个搭建好的爬虫。
+一种实现    上文提到的两种方法，固然我们可以自己慢慢来，但不是每个人都有耐心。这里给大家提供一个简单的思路。
+首先我们打开 zoomeye.org
+然后搜索 title:&amp;ldquo;Free Proxies&amp;rdquo; port:12580
+搜索结果里的 ip，十有八九是搭建了 proxypool 的服务器，我们随便选几个打开试试。 好几千个节点，都已经赤裸裸地摆在你面前了！而且Clash配置文件、小火煎、sugre配置一应俱全！
+如果使用的是其他客户端，还可以用下方的订阅链接来实现。
+PS：如果IP打不开，可以试试加上端口12580，或者在ip旁边的文本框里找它的域名！
+一点忠告    互联网不是法外之地。你的服务器在做什么，你在互联网上的一言一行，全都被别人看在眼里。所以还是低调，小心为妙。</description>
+    </item>
+    
+  </channel>
+</rss>
