@@ -65,7 +65,7 @@
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
 
-    <meta name="generator" content="Hugo 0.89.4" />
+    <meta name="generator" content="Hugo 0.100.1" />
   </head>
 
   
@@ -169,8 +169,8 @@
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl create namespace monitor
-</code></pre></div><h3 id="部署gpu-exporter">
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl create namespace monitor
+</span></span></code></pre></div><h3 id="部署gpu-exporter">
   部署GPU-exporter
   <a class="heading-link" href="#%e9%83%a8%e7%bd%b2gpu-exporter">
     <i class="fa fa-link" aria-hidden="true"></i>
@@ -182,362 +182,360 @@
 <p>这里使用了节点亲和性，需要为gpu节点添加 gpu:true 的 标签</p>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="font-style:italic">#gpu_exporter-daemonSet.yaml</span>
-<span style="font-weight:bold">apiVersion</span>: apps/v1
-<span style="font-weight:bold">kind</span>: DaemonSet
-<span style="font-weight:bold">metadata</span>:
-  <span style="font-weight:bold">namespace</span>: monitor
-  <span style="font-weight:bold">labels</span>:
-    <span style="font-weight:bold">app</span>: gpu-exporter
-  <span style="font-weight:bold">name</span>: gpu-exporter
-<span style="font-weight:bold">spec</span>:
-  <span style="font-weight:bold">selector</span>:
-    <span style="font-weight:bold">matchLabels</span>:
-      <span style="font-weight:bold">app</span>: gpu-exporter
-  <span style="font-weight:bold">template</span>:
-    <span style="font-weight:bold">metadata</span>:
-      <span style="font-weight:bold">labels</span>:
-        <span style="font-weight:bold">app</span>: gpu-exporter
-    <span style="font-weight:bold">spec</span>:
-      <span style="font-weight:bold">affinity</span>:
-        <span style="font-weight:bold">nodeAffinity</span>:
-          <span style="font-weight:bold">requiredDuringSchedulingIgnoredDuringExecution</span>:
-            <span style="font-weight:bold">nodeSelectorTerms</span>:
-              - <span style="font-weight:bold">matchExpressions</span>:
-                  - <span style="font-weight:bold">key</span>: gpu
-                    <span style="font-weight:bold">operator</span>: In
-                    <span style="font-weight:bold">values</span>:
-                      - <span style="font-style:italic">&#34;true&#34;</span>
-      <span style="font-weight:bold">hostPID</span>: <span style="font-weight:bold">true</span>
-      <span style="font-weight:bold">hostIPC</span>: <span style="font-weight:bold">true</span>
-      <span style="font-weight:bold">hostNetwork</span>: <span style="font-weight:bold">true</span>
-      <span style="font-weight:bold">containers</span>:
-        - <span style="font-weight:bold">image</span>: gpu_exporter:latest
-          <span style="font-weight:bold">imagePullPolicy</span>: Always
-          <span style="font-weight:bold">name</span>: gpu-exporter
-          <span style="font-weight:bold">ports</span>:
-            - <span style="font-weight:bold">containerPort</span>: 9445
-              <span style="font-weight:bold">name</span>: gpu-port
-              <span style="font-weight:bold">protocol</span>: TCP
-          <span style="font-weight:bold">resources</span>:
-            <span style="font-weight:bold">requests</span>:
-              <span style="font-weight:bold">cpu</span>: 100m
-            <span style="font-weight:bold">limits</span>:
-              <span style="font-weight:bold">cpu</span>: 100m
-              <span style="font-weight:bold">memory</span>: 200Mi
-      <span style="font-weight:bold">restartPolicy</span>: Always
-      <span style="font-weight:bold">serviceAccountName</span>: <span style="font-style:italic">&#34;&#34;</span>
-      <span style="font-weight:bold">imagePullSecrets</span>:
-        - <span style="font-weight:bold">name</span>: &lt;image-pull-secrets&gt;
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="font-style:italic">#gpu_exporter-daemonSet.yaml</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">apiVersion</span>: apps/v1
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">kind</span>: DaemonSet
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">namespace</span>: monitor
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">labels</span>:
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">app</span>: gpu-exporter
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">name</span>: gpu-exporter
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">selector</span>:
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">matchLabels</span>:
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">app</span>: gpu-exporter
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">template</span>:
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">metadata</span>:
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">labels</span>:
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">app</span>: gpu-exporter
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">spec</span>:
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">affinity</span>:
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">nodeAffinity</span>:
+</span></span><span style="display:flex;"><span>          <span style="font-weight:bold">requiredDuringSchedulingIgnoredDuringExecution</span>:
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">nodeSelectorTerms</span>:
+</span></span><span style="display:flex;"><span>              - <span style="font-weight:bold">matchExpressions</span>:
+</span></span><span style="display:flex;"><span>                  - <span style="font-weight:bold">key</span>: gpu
+</span></span><span style="display:flex;"><span>                    <span style="font-weight:bold">operator</span>: In
+</span></span><span style="display:flex;"><span>                    <span style="font-weight:bold">values</span>:
+</span></span><span style="display:flex;"><span>                      - <span style="font-style:italic">&#34;true&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">hostPID</span>: <span style="font-weight:bold">true</span>
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">hostIPC</span>: <span style="font-weight:bold">true</span>
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">hostNetwork</span>: <span style="font-weight:bold">true</span>
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">containers</span>:
+</span></span><span style="display:flex;"><span>        - <span style="font-weight:bold">image</span>: gpu_exporter:latest
+</span></span><span style="display:flex;"><span>          <span style="font-weight:bold">imagePullPolicy</span>: Always
+</span></span><span style="display:flex;"><span>          <span style="font-weight:bold">name</span>: gpu-exporter
+</span></span><span style="display:flex;"><span>          <span style="font-weight:bold">ports</span>:
+</span></span><span style="display:flex;"><span>            - <span style="font-weight:bold">containerPort</span>: 9445
+</span></span><span style="display:flex;"><span>              <span style="font-weight:bold">name</span>: gpu-port
+</span></span><span style="display:flex;"><span>              <span style="font-weight:bold">protocol</span>: TCP
+</span></span><span style="display:flex;"><span>          <span style="font-weight:bold">resources</span>:
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">requests</span>:
+</span></span><span style="display:flex;"><span>              <span style="font-weight:bold">cpu</span>: 100m
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">limits</span>:
+</span></span><span style="display:flex;"><span>              <span style="font-weight:bold">cpu</span>: 100m
+</span></span><span style="display:flex;"><span>              <span style="font-weight:bold">memory</span>: 200Mi
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">restartPolicy</span>: Always
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">serviceAccountName</span>: <span style="font-style:italic">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">imagePullSecrets</span>:
+</span></span><span style="display:flex;"><span>        - <span style="font-weight:bold">name</span>: &lt;image-pull-secrets&gt;
+</span></span></code></pre></div><ul>
 <li>集群导入配置文件执行</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply  -f gpu_exporter-daemonSet.yaml
-</code></pre></div><h3 id="部署node-exporter">
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl apply  -f gpu_exporter-daemonSet.yaml
+</span></span></code></pre></div><h3 id="部署node-exporter">
   部署node-exporter
   <a class="heading-link" href="#%e9%83%a8%e7%bd%b2node-exporter">
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="font-style:italic">#node-exporter-daemonset.yaml  </span>
-<span style="font-weight:bold">apiVersion</span>: apps/v1 
-<span style="font-weight:bold">kind</span>: DaemonSet 
-<span style="font-weight:bold">metadata</span>: 
-  <span style="font-weight:bold">annotations</span>: 
-  <span style="font-weight:bold">labels</span>: 
-    <span style="font-weight:bold">name</span>: node-exporter 
-  <span style="font-weight:bold">name</span>: node-exporter 
-  <span style="font-weight:bold">namespace</span>: monitor 
-<span style="font-weight:bold">spec</span>: 
-  <span style="font-weight:bold">selector</span>: 
-    <span style="font-weight:bold">matchLabels</span>: 
-      <span style="font-weight:bold">name</span>: node-exporter 
-  <span style="font-weight:bold">template</span>: 
-    <span style="font-weight:bold">metadata</span>: 
-      <span style="font-weight:bold">creationTimestamp</span>: <span style="font-weight:bold">null</span> 
-      <span style="font-weight:bold">labels</span>: 
-        <span style="font-weight:bold">name</span>: node-exporter 
-    <span style="font-weight:bold">spec</span>: 
-      <span style="font-weight:bold">containers</span>: 
-      - <span style="font-weight:bold">args</span>: 
-        - --path.procfs 
-        - /host/proc 
-        - --path.sysfs 
-        - /host/sys 
-        - --collector.filesystem.ignored-mount-points 
-        - <span style="font-style:italic">&#39;&#34;^/(sys|proc|dev|host|etc)($|/)&#34;&#39;</span> 
-        <span style="font-weight:bold">image</span>: prom/node-exporter:v0.18.1 
-        <span style="font-weight:bold">imagePullPolicy</span>: IfNotPresent 
-        <span style="font-weight:bold">name</span>: node-exporter 
-        <span style="font-weight:bold">ports</span>: 
-        - <span style="font-weight:bold">containerPort</span>: 9100 
-          <span style="font-weight:bold">hostPort</span>: 9100 
-          <span style="font-weight:bold">protocol</span>: TCP 
-        <span style="font-weight:bold">resources</span>: 
-          <span style="font-weight:bold">requests</span>: 
-            <span style="font-weight:bold">cpu</span>: 150m 
-        <span style="font-weight:bold">securityContext</span>: 
-          <span style="font-weight:bold">privileged</span>: <span style="font-weight:bold">true</span> 
-        <span style="font-weight:bold">volumeMounts</span>: 
-        - <span style="font-weight:bold">mountPath</span>: /host/dev 
-          <span style="font-weight:bold">name</span>: dev 
-        - <span style="font-weight:bold">mountPath</span>: /host/proc 
-          <span style="font-weight:bold">name</span>: proc 
-        - <span style="font-weight:bold">mountPath</span>: /host/sys 
-          <span style="font-weight:bold">name</span>: sys 
-        - <span style="font-weight:bold">mountPath</span>: /rootfs 
-          <span style="font-weight:bold">name</span>: rootfs 
-      <span style="font-weight:bold">hostIPC</span>: <span style="font-weight:bold">true</span> 
-      <span style="font-weight:bold">hostNetwork</span>: <span style="font-weight:bold">true</span> 
-      <span style="font-weight:bold">hostPID</span>: <span style="font-weight:bold">true</span> 
-      <span style="font-weight:bold">restartPolicy</span>: Always 
-      <span style="font-weight:bold">tolerations</span>: 
-      - <span style="font-weight:bold">effect</span>: NoSchedule 
-        <span style="font-weight:bold">key</span>: node-role.kubernetes.io/master 
-        <span style="font-weight:bold">operator</span>: Exists 
-      <span style="font-weight:bold">volumes</span>: 
-      - <span style="font-weight:bold">hostPath</span>: 
-          <span style="font-weight:bold">path</span>: /proc 
-          <span style="font-weight:bold">type</span>: <span style="font-style:italic">&#34;&#34;</span> 
-        <span style="font-weight:bold">name</span>: proc 
-      - <span style="font-weight:bold">hostPath</span>: 
-          <span style="font-weight:bold">path</span>: /dev 
-          <span style="font-weight:bold">type</span>: <span style="font-style:italic">&#34;&#34;</span> 
-        <span style="font-weight:bold">name</span>: dev 
-      - <span style="font-weight:bold">hostPath</span>: 
-          <span style="font-weight:bold">path</span>: /sys 
-          <span style="font-weight:bold">type</span>: <span style="font-style:italic">&#34;&#34;</span> 
-        <span style="font-weight:bold">name</span>: sys 
-      - <span style="font-weight:bold">hostPath</span>: 
-          <span style="font-weight:bold">path</span>: / 
-          <span style="font-weight:bold">type</span>: <span style="font-style:italic">&#34;&#34;</span> 
-        <span style="font-weight:bold">name</span>: rootfs 
-  <span style="font-weight:bold">updateStrategy</span>: 
-    <span style="font-weight:bold">type</span>: OnDelete 
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="font-style:italic">#node-exporter-daemonset.yaml  </span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">apiVersion</span>: apps/v1 
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">kind</span>: DaemonSet 
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">metadata</span>: 
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">annotations</span>: 
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">labels</span>: 
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">name</span>: node-exporter 
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">name</span>: node-exporter 
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">namespace</span>: monitor 
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">spec</span>: 
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">selector</span>: 
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">matchLabels</span>: 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">name</span>: node-exporter 
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">template</span>: 
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">metadata</span>: 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">creationTimestamp</span>: <span style="font-weight:bold">null</span> 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">labels</span>: 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">name</span>: node-exporter 
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">spec</span>: 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">containers</span>: 
+</span></span><span style="display:flex;"><span>      - <span style="font-weight:bold">args</span>: 
+</span></span><span style="display:flex;"><span>        - --path.procfs 
+</span></span><span style="display:flex;"><span>        - /host/proc 
+</span></span><span style="display:flex;"><span>        - --path.sysfs 
+</span></span><span style="display:flex;"><span>        - /host/sys 
+</span></span><span style="display:flex;"><span>        - --collector.filesystem.ignored-mount-points 
+</span></span><span style="display:flex;"><span>        - <span style="font-style:italic">&#39;&#34;^/(sys|proc|dev|host|etc)($|/)&#34;&#39;</span> 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">image</span>: prom/node-exporter:v0.18.1 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">imagePullPolicy</span>: IfNotPresent 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">name</span>: node-exporter 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">ports</span>: 
+</span></span><span style="display:flex;"><span>        - <span style="font-weight:bold">containerPort</span>: 9100 
+</span></span><span style="display:flex;"><span>          <span style="font-weight:bold">hostPort</span>: 9100 
+</span></span><span style="display:flex;"><span>          <span style="font-weight:bold">protocol</span>: TCP 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">resources</span>: 
+</span></span><span style="display:flex;"><span>          <span style="font-weight:bold">requests</span>: 
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">cpu</span>: 150m 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">securityContext</span>: 
+</span></span><span style="display:flex;"><span>          <span style="font-weight:bold">privileged</span>: <span style="font-weight:bold">true</span> 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">volumeMounts</span>: 
+</span></span><span style="display:flex;"><span>        - <span style="font-weight:bold">mountPath</span>: /host/dev 
+</span></span><span style="display:flex;"><span>          <span style="font-weight:bold">name</span>: dev 
+</span></span><span style="display:flex;"><span>        - <span style="font-weight:bold">mountPath</span>: /host/proc 
+</span></span><span style="display:flex;"><span>          <span style="font-weight:bold">name</span>: proc 
+</span></span><span style="display:flex;"><span>        - <span style="font-weight:bold">mountPath</span>: /host/sys 
+</span></span><span style="display:flex;"><span>          <span style="font-weight:bold">name</span>: sys 
+</span></span><span style="display:flex;"><span>        - <span style="font-weight:bold">mountPath</span>: /rootfs 
+</span></span><span style="display:flex;"><span>          <span style="font-weight:bold">name</span>: rootfs 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">hostIPC</span>: <span style="font-weight:bold">true</span> 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">hostNetwork</span>: <span style="font-weight:bold">true</span> 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">hostPID</span>: <span style="font-weight:bold">true</span> 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">restartPolicy</span>: Always 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">tolerations</span>: 
+</span></span><span style="display:flex;"><span>      - <span style="font-weight:bold">effect</span>: NoSchedule 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">key</span>: node-role.kubernetes.io/master 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">operator</span>: Exists 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">volumes</span>: 
+</span></span><span style="display:flex;"><span>      - <span style="font-weight:bold">hostPath</span>: 
+</span></span><span style="display:flex;"><span>          <span style="font-weight:bold">path</span>: /proc 
+</span></span><span style="display:flex;"><span>          <span style="font-weight:bold">type</span>: <span style="font-style:italic">&#34;&#34;</span> 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">name</span>: proc 
+</span></span><span style="display:flex;"><span>      - <span style="font-weight:bold">hostPath</span>: 
+</span></span><span style="display:flex;"><span>          <span style="font-weight:bold">path</span>: /dev 
+</span></span><span style="display:flex;"><span>          <span style="font-weight:bold">type</span>: <span style="font-style:italic">&#34;&#34;</span> 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">name</span>: dev 
+</span></span><span style="display:flex;"><span>      - <span style="font-weight:bold">hostPath</span>: 
+</span></span><span style="display:flex;"><span>          <span style="font-weight:bold">path</span>: /sys 
+</span></span><span style="display:flex;"><span>          <span style="font-weight:bold">type</span>: <span style="font-style:italic">&#34;&#34;</span> 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">name</span>: sys 
+</span></span><span style="display:flex;"><span>      - <span style="font-weight:bold">hostPath</span>: 
+</span></span><span style="display:flex;"><span>          <span style="font-weight:bold">path</span>: / 
+</span></span><span style="display:flex;"><span>          <span style="font-weight:bold">type</span>: <span style="font-style:italic">&#34;&#34;</span> 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">name</span>: rootfs 
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">updateStrategy</span>: 
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">type</span>: OnDelete 
+</span></span></code></pre></div><ul>
 <li>导入</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f node-exporter-daemonset.yaml
-</code></pre></div><h3 id="创建用于prometheus访问kubenetes资源对象的rbac对象">
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl apply -f node-exporter-daemonset.yaml
+</span></span></code></pre></div><h3 id="创建用于prometheus访问kubenetes资源对象的rbac对象">
   创建用于Prometheus访问KUbenetes资源对象的RBAC对象
   <a class="heading-link" href="#%e5%88%9b%e5%bb%ba%e7%94%a8%e4%ba%8eprometheus%e8%ae%bf%e9%97%aekubenetes%e8%b5%84%e6%ba%90%e5%af%b9%e8%b1%a1%e7%9a%84rbac%e5%af%b9%e8%b1%a1">
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="font-style:italic"># prom.rbac.yaml</span>
-<span style="font-weight:bold">apiVersion</span>: v1
-<span style="font-weight:bold">kind</span>: ServiceAccount
-<span style="font-weight:bold">metadata</span>:
-  <span style="font-weight:bold">name</span>: prometheus
-  <span style="font-weight:bold">namespace</span>: monitor
-<span style="font-weight:bold">---</span>
-<span style="font-weight:bold">apiVersion</span>: rbac.authorization.k8s.io/v1
-<span style="font-weight:bold">kind</span>: ClusterRole
-<span style="font-weight:bold">metadata</span>:
-  <span style="font-weight:bold">name</span>: prometheus
-<span style="font-weight:bold">rules</span>:
-- <span style="font-weight:bold">apiGroups</span>:
-  - <span style="font-style:italic">&#34;&#34;</span>
-  <span style="font-weight:bold">resources</span>:
-  - nodes
-  - services
-  - endpoints
-  - pods
-  - nodes/proxy
-  <span style="font-weight:bold">verbs</span>:
-  - get
-  - list
-  - watch
-- <span style="font-weight:bold">apiGroups</span>:
-  - <span style="font-style:italic">&#34;extensions&#34;</span>
-  <span style="font-weight:bold">resources</span>:
-    - ingresses
-  <span style="font-weight:bold">verbs</span>:
-  - get
-  - list
-  - watch
-- <span style="font-weight:bold">apiGroups</span>:
-  - <span style="font-style:italic">&#34;&#34;</span>
-  <span style="font-weight:bold">resources</span>:
-  - configmaps
-  - nodes/metrics
-  <span style="font-weight:bold">verbs</span>:
-  - get
-- <span style="font-weight:bold">nonResourceURLs</span>:
-  - /metrics
-  <span style="font-weight:bold">verbs</span>:
-  - get
-<span style="font-weight:bold">---</span>
-<span style="font-weight:bold">apiVersion</span>: rbac.authorization.k8s.io/v1beta1
-<span style="font-weight:bold">kind</span>: ClusterRoleBinding
-<span style="font-weight:bold">metadata</span>:
-  <span style="font-weight:bold">name</span>: prometheus
-<span style="font-weight:bold">roleRef</span>:
-  <span style="font-weight:bold">apiGroup</span>: rbac.authorization.k8s.io
-  <span style="font-weight:bold">kind</span>: ClusterRole
-  <span style="font-weight:bold">name</span>: prometheus
-<span style="font-weight:bold">subjects</span>:
-- <span style="font-weight:bold">kind</span>: ServiceAccount
-  <span style="font-weight:bold">name</span>: prometheus
-  <span style="font-weight:bold">namespace</span>: monitor
-
-</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f prom.rbac.yaml 
-</code></pre></div><h3 id="获取prometheus对应的secret信息">
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="font-style:italic"># prom.rbac.yaml</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">apiVersion</span>: v1
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">kind</span>: ServiceAccount
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">name</span>: prometheus
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">namespace</span>: monitor
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">---</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">apiVersion</span>: rbac.authorization.k8s.io/v1
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">kind</span>: ClusterRole
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">name</span>: prometheus
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">rules</span>:
+</span></span><span style="display:flex;"><span>- <span style="font-weight:bold">apiGroups</span>:
+</span></span><span style="display:flex;"><span>  - <span style="font-style:italic">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">resources</span>:
+</span></span><span style="display:flex;"><span>  - nodes
+</span></span><span style="display:flex;"><span>  - services
+</span></span><span style="display:flex;"><span>  - endpoints
+</span></span><span style="display:flex;"><span>  - pods
+</span></span><span style="display:flex;"><span>  - nodes/proxy
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">verbs</span>:
+</span></span><span style="display:flex;"><span>  - get
+</span></span><span style="display:flex;"><span>  - list
+</span></span><span style="display:flex;"><span>  - watch
+</span></span><span style="display:flex;"><span>- <span style="font-weight:bold">apiGroups</span>:
+</span></span><span style="display:flex;"><span>  - <span style="font-style:italic">&#34;extensions&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">resources</span>:
+</span></span><span style="display:flex;"><span>    - ingresses
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">verbs</span>:
+</span></span><span style="display:flex;"><span>  - get
+</span></span><span style="display:flex;"><span>  - list
+</span></span><span style="display:flex;"><span>  - watch
+</span></span><span style="display:flex;"><span>- <span style="font-weight:bold">apiGroups</span>:
+</span></span><span style="display:flex;"><span>  - <span style="font-style:italic">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">resources</span>:
+</span></span><span style="display:flex;"><span>  - configmaps
+</span></span><span style="display:flex;"><span>  - nodes/metrics
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">verbs</span>:
+</span></span><span style="display:flex;"><span>  - get
+</span></span><span style="display:flex;"><span>- <span style="font-weight:bold">nonResourceURLs</span>:
+</span></span><span style="display:flex;"><span>  - /metrics
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">verbs</span>:
+</span></span><span style="display:flex;"><span>  - get
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">---</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">apiVersion</span>: rbac.authorization.k8s.io/v1beta1
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">kind</span>: ClusterRoleBinding
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">name</span>: prometheus
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">roleRef</span>:
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">apiGroup</span>: rbac.authorization.k8s.io
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">kind</span>: ClusterRole
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">name</span>: prometheus
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">subjects</span>:
+</span></span><span style="display:flex;"><span>- <span style="font-weight:bold">kind</span>: ServiceAccount
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">name</span>: prometheus
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">namespace</span>: monitor
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl apply -f prom.rbac.yaml 
+</span></span></code></pre></div><h3 id="获取prometheus对应的secret信息">
   获取prometheus对应的Secret信息
   <a class="heading-link" href="#%e8%8e%b7%e5%8f%96prometheus%e5%af%b9%e5%ba%94%e7%9a%84secret%e4%bf%a1%e6%81%af">
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl get sa prometheus  -n monitor  -o yaml
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl get sa prometheus  -n monitor  -o yaml
+</span></span></code></pre></div><ul>
 <li>获取密文名称：</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">...
-secrets:
-- name: prometheus-token-fmddk
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>secrets:
+</span></span><span style="display:flex;"><span>- name: prometheus-token-fmddk
+</span></span></code></pre></div><ul>
 <li>通过密文名称获取对应token:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl  describe secret prometheus-token-fmddk -n monitor 
-
-Name:         prometheus-token-fmddk
-...
-Data
-====
-ca.crt:     570 bytes
-namespace:  7 bytes
-token:      &lt;token 字符串&gt;
-</code></pre></div><p>上面的token 就是我们用于访问APIServer 的数据，将token保存为k3s.token的文本文件中，放置于prometheus.yaml同级目录中。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl  describe secret prometheus-token-fmddk -n monitor 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Name:         prometheus-token-fmddk
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>Data
+</span></span><span style="display:flex;"><span>====
+</span></span><span style="display:flex;"><span>ca.crt:     570 bytes
+</span></span><span style="display:flex;"><span>namespace:  7 bytes
+</span></span><span style="display:flex;"><span>token:      &lt;token 字符串&gt;
+</span></span></code></pre></div><p>上面的token 就是我们用于访问APIServer 的数据，将token保存为k3s.token的文本文件中，放置于prometheus.yaml同级目录中。</p>
 <h3 id="添加prometheus-job">
   添加prometheus job
   <a class="heading-link" href="#%e6%b7%bb%e5%8a%a0prometheus-job">
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="font-style:italic">#prometheus.yaml</span>
-  - <span style="font-weight:bold">job_name</span>: <span style="font-style:italic">&#39;test-kubernetes-apiservers&#39;</span> 
-    <span style="font-weight:bold">kubernetes_sd_configs</span>: 
-    - <span style="font-weight:bold">role</span>: endpoints
-      <span style="font-weight:bold">api_server</span>: https://&lt;apiserver&gt;:6443
-      <span style="font-weight:bold">tls_config</span>: 
-        <span style="font-weight:bold">insecure_skip_verify</span>: <span style="font-weight:bold">true</span>  
-      <span style="font-weight:bold">bearer_token_file</span>: /etc/prometheus/k3s.token 
-    <span style="font-weight:bold">scheme</span>: https 
-    <span style="font-weight:bold">tls_config</span>: 
-      <span style="font-weight:bold">insecure_skip_verify</span>: <span style="font-weight:bold">true</span> 
-    <span style="font-weight:bold">bearer_token_file</span>: /etc/prometheus/k3s.token 
-    <span style="font-weight:bold">relabel_configs</span>: 
-    - <span style="font-weight:bold">source_labels</span>: [__meta_kubernetes_namespace, __meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name] 
-      <span style="font-weight:bold">action</span>: keep 
-      <span style="font-weight:bold">regex</span>: default;kubernetes;https 
-    - <span style="font-weight:bold">target_label</span>: __address__ 
-      <span style="font-weight:bold">replacement</span>: &lt;apiserver&gt;:6443 
-  - <span style="font-weight:bold">job_name</span>: <span style="font-style:italic">&#39;test-kubernetes-nodes&#39;</span> 
-    <span style="font-weight:bold">scheme</span>: http 
-    <span style="font-weight:bold">tls_config</span>: 
-      <span style="font-weight:bold">insecure_skip_verify</span>: <span style="font-weight:bold">true</span> 
-    <span style="font-weight:bold">bearer_token_file</span>: /etc/prometheus/k3s.token 
-    <span style="font-weight:bold">kubernetes_sd_configs</span>: 
-    - <span style="font-weight:bold">role</span>: node 
-      <span style="font-weight:bold">api_server</span>: https://&lt;apiserver&gt;:6443 
-      <span style="font-weight:bold">tls_config</span>: 
-        <span style="font-weight:bold">insecure_skip_verify</span>: <span style="font-weight:bold">true</span> 
-      <span style="font-weight:bold">bearer_token_file</span>: /etc/prometheus/k3s.token 
-    <span style="font-weight:bold">relabel_configs</span>: 
-      - <span style="font-weight:bold">source_labels</span>: [__address__] 
-        <span style="font-weight:bold">regex</span>: <span style="font-style:italic">&#39;(.*):10250&#39;</span> 
-        <span style="font-weight:bold">replacement</span>: <span style="font-style:italic">&#39;${1}:9100&#39;</span> 
-        <span style="font-weight:bold">target_label</span>: __address__ 
-        <span style="font-weight:bold">action</span>: replace 
-      - <span style="font-weight:bold">source_labels</span>: [__meta_kubernetes_node_label_failure_domain_beta_kubernetes_io_region] 
-        <span style="font-weight:bold">regex</span>: <span style="font-style:italic">&#39;(.*)&#39;</span> 
-        <span style="font-weight:bold">replacement</span>: <span style="font-style:italic">&#39;${1}&#39;</span> 
-        <span style="font-weight:bold">action</span>: replace 
-        <span style="font-weight:bold">target_label</span>: LOC 
-      - <span style="font-weight:bold">source_labels</span>: [__meta_kubernetes_node_label_failure_domain_beta_kubernetes_io_region] 
-        <span style="font-weight:bold">regex</span>: <span style="font-style:italic">&#39;(.*)&#39;</span> 
-        <span style="font-weight:bold">replacement</span>: <span style="font-style:italic">&#39;NODE&#39;</span> 
-        <span style="font-weight:bold">action</span>: replace 
-        <span style="font-weight:bold">target_label</span>: Type 
-      - <span style="font-weight:bold">source_labels</span>: [__meta_kubernetes_node_label_failure_domain_beta_kubernetes_io_region] 
-        <span style="font-weight:bold">regex</span>: <span style="font-style:italic">&#39;(.*)&#39;</span> 
-        <span style="font-weight:bold">replacement</span>: <span style="font-style:italic">&#39;K3S-test&#39;</span> 
-        <span style="font-weight:bold">action</span>: replace 
-        <span style="font-weight:bold">target_label</span>: Env 
-      - <span style="font-weight:bold">action</span>: labelmap 
-        <span style="font-weight:bold">regex</span>: __meta_kubernetes_node_label_(.+) 
-  - <span style="font-weight:bold">job_name</span>: <span style="font-style:italic">&#39;test-kubernetes-pods&#39;</span> 
-    <span style="font-weight:bold">kubernetes_sd_configs</span>: 
-    - <span style="font-weight:bold">role</span>: pod 
-      <span style="font-weight:bold">api_server</span>: https://&lt;apiserver&gt;:6443 
-      <span style="font-weight:bold">tls_config</span>: 
-        <span style="font-weight:bold">insecure_skip_verify</span>: <span style="font-weight:bold">true</span> 
-      <span style="font-weight:bold">bearer_token_file</span>: /etc/prometheus/k3s.token 
-    <span style="font-weight:bold">relabel_configs</span>: 
-    - <span style="font-weight:bold">source_labels</span>: [__meta_kubernetes_pod_annotation_prometheus_io_scrape] 
-      <span style="font-weight:bold">action</span>: keep 
-      <span style="font-weight:bold">regex</span>: <span style="font-weight:bold">true</span> 
-    - <span style="font-weight:bold">source_labels</span>: [__meta_kubernetes_pod_annotation_prometheus_io_path] 
-      <span style="font-weight:bold">action</span>: replace 
-      <span style="font-weight:bold">target_label</span>: __metrics_path__ 
-      <span style="font-weight:bold">regex</span>: (.+) 
-    - <span style="font-weight:bold">source_labels</span>: [__address__, __meta_kubernetes_pod_annotation_prometheus_io_port] 
-      <span style="font-weight:bold">action</span>: replace 
-      <span style="font-weight:bold">regex</span>: ([^:]+)(?::\d+)?;(\d+) 
-      <span style="font-weight:bold">replacement</span>: $1:$2 
-      <span style="font-weight:bold">target_label</span>: __address__ 
-    - <span style="font-weight:bold">action</span>: labelmap 
-      <span style="font-weight:bold">regex</span>: __meta_kubernetes_pod_label_(.+) 
-    - <span style="font-weight:bold">source_labels</span>: [__meta_kubernetes_namespace] 
-      <span style="font-weight:bold">action</span>: replace 
-      <span style="font-weight:bold">target_label</span>: kubernetes_namespace 
-    - <span style="font-weight:bold">source_labels</span>: [__meta_kubernetes_pod_name] 
-      <span style="font-weight:bold">action</span>: replace 
-      <span style="font-weight:bold">target_label</span>: kubernetes_pod_name 
-    - <span style="font-weight:bold">source_labels</span>: [__meta_kubernetes_pod_label_pod_template_hash] 
-      <span style="font-weight:bold">regex</span>: <span style="font-style:italic">&#39;(.*)&#39;</span> 
-      <span style="font-weight:bold">replacement</span>: <span style="font-style:italic">&#39;K3S-test&#39;</span> 
-      <span style="font-weight:bold">action</span>: replace 
-      <span style="font-weight:bold">target_label</span>: Env 
-  - <span style="font-weight:bold">job_name</span>: <span style="font-style:italic">&#39;test-kubernetes-gpu-node&#39;</span> 
-    <span style="font-weight:bold">metrics_path</span>: /metrics 
-    <span style="font-weight:bold">kubernetes_sd_configs</span>: 
-    - <span style="font-weight:bold">role</span>: node 
-      <span style="font-weight:bold">api_server</span>: https://&lt;apiserver&gt;:6443 
-      <span style="font-weight:bold">tls_config</span>: 
-        <span style="font-weight:bold">insecure_skip_verify</span>: <span style="font-weight:bold">true</span> 
-      <span style="font-weight:bold">bearer_token_file</span>: /etc/prometheus/k3s.token 
-    <span style="font-weight:bold">relabel_configs</span>: 
-    - <span style="font-weight:bold">source_labels</span>: [__meta_kubernetes_node_label_gpu] 
-      <span style="font-weight:bold">action</span>: keep 
-      <span style="font-weight:bold">regex</span>: <span style="font-style:italic">&#34;true&#34;</span> 
-    - <span style="font-weight:bold">source_labels</span>: [__address__] 
-      <span style="font-weight:bold">action</span>: replace 
-      <span style="font-weight:bold">regex</span>: <span style="font-style:italic">&#39;(.*):10250&#39;</span> 
-      <span style="font-weight:bold">replacement</span>: <span style="font-style:italic">&#39;${1}:9445&#39;</span> 
-      <span style="font-weight:bold">target_label</span>: __address__ 
-    - <span style="font-weight:bold">source_labels</span>: [__meta_kubernetes_node_label_failure_domain_beta_kubernetes_io_region] 
-      <span style="font-weight:bold">regex</span>: <span style="font-style:italic">&#39;(.*)&#39;</span> 
-      <span style="font-weight:bold">replacement</span>: <span style="font-style:italic">&#39;${1}&#39;</span> 
-      <span style="font-weight:bold">action</span>: replace 
-      <span style="font-weight:bold">target_label</span>: LOC 
-    - <span style="font-weight:bold">source_labels</span>: [__meta_kubernetes_node_label_failure_domain_beta_kubernetes_io_region] 
-      <span style="font-weight:bold">regex</span>: <span style="font-style:italic">&#39;(.*)&#39;</span> 
-      <span style="font-weight:bold">replacement</span>: <span style="font-style:italic">&#39;GPU&#39;</span> 
-      <span style="font-weight:bold">action</span>: replace 
-      <span style="font-weight:bold">target_label</span>: Type 
-    - <span style="font-weight:bold">source_labels</span>: [__meta_kubernetes_node_label_failure_domain_beta_kubernetes_io_region] 
-      <span style="font-weight:bold">regex</span>: <span style="font-style:italic">&#39;(.*)&#39;</span> 
-      <span style="font-weight:bold">replacement</span>: <span style="font-style:italic">&#39;K3S-test&#39;</span> 
-      <span style="font-weight:bold">action</span>: replace 
-      <span style="font-weight:bold">target_label</span>: Env 
-    - <span style="font-weight:bold">action</span>: labelmap 
-      <span style="font-weight:bold">regex</span>: __meta_kubernetes_node_label_(.+) 
-
-</code></pre></div><p>这里 bearer_token_file 就是上面所保存的token, <!-- raw HTML omitted -->为prometheus所能访问到的k8s(k3s) api_server 地址。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="font-style:italic">#prometheus.yaml</span>
+</span></span><span style="display:flex;"><span>  - <span style="font-weight:bold">job_name</span>: <span style="font-style:italic">&#39;test-kubernetes-apiservers&#39;</span> 
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">kubernetes_sd_configs</span>: 
+</span></span><span style="display:flex;"><span>    - <span style="font-weight:bold">role</span>: endpoints
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">api_server</span>: https://&lt;apiserver&gt;:6443
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">tls_config</span>: 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">insecure_skip_verify</span>: <span style="font-weight:bold">true</span>  
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">bearer_token_file</span>: /etc/prometheus/k3s.token 
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">scheme</span>: https 
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">tls_config</span>: 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">insecure_skip_verify</span>: <span style="font-weight:bold">true</span> 
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">bearer_token_file</span>: /etc/prometheus/k3s.token 
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">relabel_configs</span>: 
+</span></span><span style="display:flex;"><span>    - <span style="font-weight:bold">source_labels</span>: [__meta_kubernetes_namespace, __meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name] 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">action</span>: keep 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">regex</span>: default;kubernetes;https 
+</span></span><span style="display:flex;"><span>    - <span style="font-weight:bold">target_label</span>: __address__ 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">replacement</span>: &lt;apiserver&gt;:6443 
+</span></span><span style="display:flex;"><span>  - <span style="font-weight:bold">job_name</span>: <span style="font-style:italic">&#39;test-kubernetes-nodes&#39;</span> 
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">scheme</span>: http 
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">tls_config</span>: 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">insecure_skip_verify</span>: <span style="font-weight:bold">true</span> 
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">bearer_token_file</span>: /etc/prometheus/k3s.token 
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">kubernetes_sd_configs</span>: 
+</span></span><span style="display:flex;"><span>    - <span style="font-weight:bold">role</span>: node 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">api_server</span>: https://&lt;apiserver&gt;:6443 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">tls_config</span>: 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">insecure_skip_verify</span>: <span style="font-weight:bold">true</span> 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">bearer_token_file</span>: /etc/prometheus/k3s.token 
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">relabel_configs</span>: 
+</span></span><span style="display:flex;"><span>      - <span style="font-weight:bold">source_labels</span>: [__address__] 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">regex</span>: <span style="font-style:italic">&#39;(.*):10250&#39;</span> 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">replacement</span>: <span style="font-style:italic">&#39;${1}:9100&#39;</span> 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">target_label</span>: __address__ 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">action</span>: replace 
+</span></span><span style="display:flex;"><span>      - <span style="font-weight:bold">source_labels</span>: [__meta_kubernetes_node_label_failure_domain_beta_kubernetes_io_region] 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">regex</span>: <span style="font-style:italic">&#39;(.*)&#39;</span> 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">replacement</span>: <span style="font-style:italic">&#39;${1}&#39;</span> 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">action</span>: replace 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">target_label</span>: LOC 
+</span></span><span style="display:flex;"><span>      - <span style="font-weight:bold">source_labels</span>: [__meta_kubernetes_node_label_failure_domain_beta_kubernetes_io_region] 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">regex</span>: <span style="font-style:italic">&#39;(.*)&#39;</span> 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">replacement</span>: <span style="font-style:italic">&#39;NODE&#39;</span> 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">action</span>: replace 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">target_label</span>: Type 
+</span></span><span style="display:flex;"><span>      - <span style="font-weight:bold">source_labels</span>: [__meta_kubernetes_node_label_failure_domain_beta_kubernetes_io_region] 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">regex</span>: <span style="font-style:italic">&#39;(.*)&#39;</span> 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">replacement</span>: <span style="font-style:italic">&#39;K3S-test&#39;</span> 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">action</span>: replace 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">target_label</span>: Env 
+</span></span><span style="display:flex;"><span>      - <span style="font-weight:bold">action</span>: labelmap 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">regex</span>: __meta_kubernetes_node_label_(.+) 
+</span></span><span style="display:flex;"><span>  - <span style="font-weight:bold">job_name</span>: <span style="font-style:italic">&#39;test-kubernetes-pods&#39;</span> 
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">kubernetes_sd_configs</span>: 
+</span></span><span style="display:flex;"><span>    - <span style="font-weight:bold">role</span>: pod 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">api_server</span>: https://&lt;apiserver&gt;:6443 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">tls_config</span>: 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">insecure_skip_verify</span>: <span style="font-weight:bold">true</span> 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">bearer_token_file</span>: /etc/prometheus/k3s.token 
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">relabel_configs</span>: 
+</span></span><span style="display:flex;"><span>    - <span style="font-weight:bold">source_labels</span>: [__meta_kubernetes_pod_annotation_prometheus_io_scrape] 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">action</span>: keep 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">regex</span>: <span style="font-weight:bold">true</span> 
+</span></span><span style="display:flex;"><span>    - <span style="font-weight:bold">source_labels</span>: [__meta_kubernetes_pod_annotation_prometheus_io_path] 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">action</span>: replace 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">target_label</span>: __metrics_path__ 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">regex</span>: (.+) 
+</span></span><span style="display:flex;"><span>    - <span style="font-weight:bold">source_labels</span>: [__address__, __meta_kubernetes_pod_annotation_prometheus_io_port] 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">action</span>: replace 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">regex</span>: ([^:]+)(?::\d+)?;(\d+) 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">replacement</span>: $1:$2 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">target_label</span>: __address__ 
+</span></span><span style="display:flex;"><span>    - <span style="font-weight:bold">action</span>: labelmap 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">regex</span>: __meta_kubernetes_pod_label_(.+) 
+</span></span><span style="display:flex;"><span>    - <span style="font-weight:bold">source_labels</span>: [__meta_kubernetes_namespace] 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">action</span>: replace 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">target_label</span>: kubernetes_namespace 
+</span></span><span style="display:flex;"><span>    - <span style="font-weight:bold">source_labels</span>: [__meta_kubernetes_pod_name] 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">action</span>: replace 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">target_label</span>: kubernetes_pod_name 
+</span></span><span style="display:flex;"><span>    - <span style="font-weight:bold">source_labels</span>: [__meta_kubernetes_pod_label_pod_template_hash] 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">regex</span>: <span style="font-style:italic">&#39;(.*)&#39;</span> 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">replacement</span>: <span style="font-style:italic">&#39;K3S-test&#39;</span> 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">action</span>: replace 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">target_label</span>: Env 
+</span></span><span style="display:flex;"><span>  - <span style="font-weight:bold">job_name</span>: <span style="font-style:italic">&#39;test-kubernetes-gpu-node&#39;</span> 
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">metrics_path</span>: /metrics 
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">kubernetes_sd_configs</span>: 
+</span></span><span style="display:flex;"><span>    - <span style="font-weight:bold">role</span>: node 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">api_server</span>: https://&lt;apiserver&gt;:6443 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">tls_config</span>: 
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">insecure_skip_verify</span>: <span style="font-weight:bold">true</span> 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">bearer_token_file</span>: /etc/prometheus/k3s.token 
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">relabel_configs</span>: 
+</span></span><span style="display:flex;"><span>    - <span style="font-weight:bold">source_labels</span>: [__meta_kubernetes_node_label_gpu] 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">action</span>: keep 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">regex</span>: <span style="font-style:italic">&#34;true&#34;</span> 
+</span></span><span style="display:flex;"><span>    - <span style="font-weight:bold">source_labels</span>: [__address__] 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">action</span>: replace 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">regex</span>: <span style="font-style:italic">&#39;(.*):10250&#39;</span> 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">replacement</span>: <span style="font-style:italic">&#39;${1}:9445&#39;</span> 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">target_label</span>: __address__ 
+</span></span><span style="display:flex;"><span>    - <span style="font-weight:bold">source_labels</span>: [__meta_kubernetes_node_label_failure_domain_beta_kubernetes_io_region] 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">regex</span>: <span style="font-style:italic">&#39;(.*)&#39;</span> 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">replacement</span>: <span style="font-style:italic">&#39;${1}&#39;</span> 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">action</span>: replace 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">target_label</span>: LOC 
+</span></span><span style="display:flex;"><span>    - <span style="font-weight:bold">source_labels</span>: [__meta_kubernetes_node_label_failure_domain_beta_kubernetes_io_region] 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">regex</span>: <span style="font-style:italic">&#39;(.*)&#39;</span> 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">replacement</span>: <span style="font-style:italic">&#39;GPU&#39;</span> 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">action</span>: replace 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">target_label</span>: Type 
+</span></span><span style="display:flex;"><span>    - <span style="font-weight:bold">source_labels</span>: [__meta_kubernetes_node_label_failure_domain_beta_kubernetes_io_region] 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">regex</span>: <span style="font-style:italic">&#39;(.*)&#39;</span> 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">replacement</span>: <span style="font-style:italic">&#39;K3S-test&#39;</span> 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">action</span>: replace 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">target_label</span>: Env 
+</span></span><span style="display:flex;"><span>    - <span style="font-weight:bold">action</span>: labelmap 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">regex</span>: __meta_kubernetes_node_label_(.+) 
+</span></span></code></pre></div><p>这里 bearer_token_file 就是上面所保存的token, <!-- raw HTML omitted -->为prometheus所能访问到的k8s(k3s) api_server 地址。</p>
 <p>reload使之生效:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl -X POST --connect-timeout 10 -m 20 http://127.0.0.1:9090/-/reload
-</code></pre></div><p>到现在为止，外部prometheus已经将k8s(k3s) 添加到监控列表里面</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>curl -X POST --connect-timeout 10 -m 20 http://127.0.0.1:9090/-/reload
+</span></span></code></pre></div><p>到现在为止，外部prometheus已经将k8s(k3s) 添加到监控列表里面</p>
 
       </div>
 
@@ -574,7 +572,7 @@ token:      &lt;token 字符串&gt;
 
     
       
-      <script src="/js/coder.min.39a51230dce2ac866c049b52573e38bf60666af4bc63c1bdf203b9b2d95b1cd6.js" integrity="sha256-OaUSMNzirIZsBJtSVz44v2BmavS8Y8G98gO5stlbHNY="></script>
+      <script src="/js/coder.min.faf284b268283ca4c276087ba3ee2dc8bd9c8e95dde688c2f16efaa82c4884be.js" integrity="sha256-&#43;vKEsmgoPKTCdgh7o&#43;4tyL2cjpXd5ojC8W76qCxIhL4="></script>
     
 
     

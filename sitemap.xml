@@ -2,10 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://lanqiu.tech/categories/</loc>
-    <lastmod>2022-03-12T15:24:45+08:00</lastmod>
+    <loc>https://lanqiu.tech/tags/gpu/</loc>
+    <lastmod>2022-06-24T11:30:53+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/tags/nvidia/</loc>
+    <lastmod>2022-06-24T11:30:53+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/posts/nvml_driver_version_mismatch/</loc>
+    <lastmod>2022-06-24T11:30:53+08:00</lastmod>
   </url><url>
     <loc>https://lanqiu.tech/posts/</loc>
+    <lastmod>2022-06-24T11:30:53+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/tags/</loc>
+    <lastmod>2022-06-24T11:30:53+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/</loc>
+    <lastmod>2022-06-24T11:30:53+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/categories/</loc>
     <lastmod>2022-03-12T15:24:45+08:00</lastmod>
   </url><url>
     <loc>https://lanqiu.tech/categories/proxy/</loc>
@@ -17,13 +32,7 @@
     <loc>https://lanqiu.tech/tags/ss/</loc>
     <lastmod>2022-03-12T15:24:45+08:00</lastmod>
   </url><url>
-    <loc>https://lanqiu.tech/tags/</loc>
-    <lastmod>2022-03-12T15:24:45+08:00</lastmod>
-  </url><url>
     <loc>https://lanqiu.tech/tags/vmess/</loc>
-    <lastmod>2022-03-12T15:24:45+08:00</lastmod>
-  </url><url>
-    <loc>https://lanqiu.tech/</loc>
     <lastmod>2022-03-12T15:24:45+08:00</lastmod>
   </url><url>
     <loc>https://lanqiu.tech/posts/get_free_proxies/</loc>
@@ -50,10 +59,10 @@
     <loc>https://lanqiu.tech/tags/</loc>
     <lastmod>2022-02-21T22:42:59+08:00</lastmod>
   </url><url>
-    <loc>https://lanqiu.tech/tags/golang/</loc>
+    <loc>https://lanqiu.tech/posts/build-go-project-for-linux-on-mac/</loc>
     <lastmod>2022-02-21T22:27:54+08:00</lastmod>
   </url><url>
-    <loc>https://lanqiu.tech/posts/build-go-project-for-linux-on-mac/</loc>
+    <loc>https://lanqiu.tech/tags/golang/</loc>
     <lastmod>2022-02-21T22:27:54+08:00</lastmod>
   </url><url>
     <loc>https://lanqiu.tech/posts/first/</loc>

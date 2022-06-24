@@ -15,9 +15,9 @@
       <guid>https://lanqiu.tech/posts/local_prometheus_to_monitor_k8s_or_k3s_cluster/</guid>
       <description>通过prometheus监控kubernetes时，在一些实际环境中，会存在把prometheus 部署到kubernetes集群外部，这时需要事先提供token和ca文件来做到自动发现。
 具体操作步骤：
-创建monitor 命名空间：    kubectl create namespace monitor 部署GPU-exporter      编写yaml文件
+创建monitor 命名空间： kubectl create namespace monitor 部署GPU-exporter 编写yaml文件
 这里使用了节点亲和性，需要为gpu节点添加 gpu:true 的 标签
-  #gpu_exporter-daemonSet.yaml apiVersion: apps/v1 kind: DaemonSet metadata: namespace: monitor labels: app: gpu-exporter name: gpu-exporter spec: selector: matchLabels: app: gpu-exporter template: metadata: labels: app: gpu-exporter spec: affinity: nodeAffinity: requiredDuringSchedulingIgnoredDuringExecution: nodeSelectorTerms: - matchExpressions: - key: gpu operator: In values: - &amp;#34;true&amp;#34; hostPID: true hostIPC: true hostNetwork: true containers: - image: gpu_exporter:latest imagePullPolicy: Always name: gpu-exporter ports: - containerPort: 9445 name: gpu-port protocol: TCP resources: requests: cpu: 100m limits: cpu: 100m memory: 200Mi restartPolicy: Always serviceAccountName: &amp;#34;&amp;#34; imagePullSecrets: - name: &amp;lt;image-pull-secrets&amp;gt;  集群导入配置文件执行  kubectl apply -f gpu_exporter-daemonSet.</description>
+#gpu_exporter-daemonSet.yaml apiVersion: apps/v1 kind: DaemonSet metadata: namespace: monitor labels: app: gpu-exporter name: gpu-exporter spec: selector: matchLabels: app: gpu-exporter template: metadata: labels: app: gpu-exporter spec: affinity: nodeAffinity: requiredDuringSchedulingIgnoredDuringExecution: nodeSelectorTerms: - matchExpressions: - key: gpu operator: In values: - &amp;#34;true&amp;#34; hostPID: true hostIPC: true hostNetwork: true containers: - image: gpu_exporter:latest imagePullPolicy: Always name: gpu-exporter ports: - containerPort: 9445 name: gpu-port protocol: TCP resources: requests: cpu: 100m limits: cpu: 100m memory: 200Mi restartPolicy: Always serviceAccountName: &amp;#34;&amp;#34; imagePullSecrets: - name: &amp;lt;image-pull-secrets&amp;gt; 集群导入配置文件执行 kubectl apply -f gpu_exporter-daemonSet.</description>
     </item>
     
   </channel>

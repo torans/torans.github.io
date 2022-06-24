@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nvidia on 兰秋十六</title>
+    <link>https://lanqiu.tech/tags/nvidia/</link>
+    <description>Recent content in nvidia on 兰秋十六</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>cn</language>
+    <lastBuildDate>Fri, 24 Jun 2022 11:30:53 +0800</lastBuildDate><atom:link href="https://lanqiu.tech/tags/nvidia/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NVIDIA NVML Driver/library version mimatch 解决办法</title>
+      <link>https://lanqiu.tech/posts/nvml_driver_version_mismatch/</link>
+      <pubDate>Fri, 24 Jun 2022 11:30:53 +0800</pubDate>
+      
+      <guid>https://lanqiu.tech/posts/nvml_driver_version_mismatch/</guid>
+      <description>###问题描述：执行nvidia-smi命令的时候出现一下错误：
+root@localhost:/mnt/md0/lotusWorker# nvidia-smi Failed to initialize NVML: Driver/library version mismatch 解决办法：卸载原先加载的驱动 sudo rmmod nvidia_drm sudo rmmod nvidia_uvm sudo rmmod nvidia_modeset sudo rmmod nvidia # 再次执行nvidia_smi </description>
+    </item>
+    
+  </channel>
+</rss>
