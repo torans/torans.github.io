@@ -6,7 +6,18 @@
     <description>Recent content in kubernetes on 兰秋十六</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
-    <lastBuildDate>Thu, 24 Feb 2022 15:39:20 +0800</lastBuildDate><atom:link href="https://lanqiu.tech/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 01 Jul 2022 09:47:31 +0800</lastBuildDate><atom:link href="https://lanqiu.tech/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>K8S删除状态为Evicted的Pod</title>
+      <link>https://lanqiu.tech/posts/delete_evicted_pod/</link>
+      <pubDate>Fri, 01 Jul 2022 09:47:31 +0800</pubDate>
+      
+      <guid>https://lanqiu.tech/posts/delete_evicted_pod/</guid>
+      <description>eviction即驱赶的意思。当节点出现异常的时候，k8s根据机制驱赶该节点上的Pod（多见于资源不足时导致的驱赶）。
+删除驱赶产生的遗留Pod.
+方法一： kubectl get pods | grep Evicted | awk &amp;#39;{print $1}&amp;#39; | xargs kubectl delete pod 方法二： kubectl get pods --all-namespaces -o json | jq &amp;#39;.items[] | select(.status.reason!=null) | select(.status.reason | contains(&amp;#34;Evicted&amp;#34;)) | &amp;#34;kubectl delete pods \(.metadata.name) -n \(.metadata.namespace)&amp;#34;&amp;#39; | xargs -n 1 bash -c </description>
+    </item>
+    
     <item>
       <title>外部Prometheus监控k8s（k3s）集群</title>
       <link>https://lanqiu.tech/posts/local_prometheus_to_monitor_k8s_or_k3s_cluster/</link>

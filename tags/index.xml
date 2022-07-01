@@ -6,7 +6,34 @@
     <description>Recent content in Tags on 兰秋十六</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
-    <lastBuildDate>Fri, 24 Jun 2022 11:30:53 +0800</lastBuildDate><atom:link href="https://lanqiu.tech/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 01 Jul 2022 09:47:31 +0800</lastBuildDate><atom:link href="https://lanqiu.tech/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>evicted</title>
+      <link>https://lanqiu.tech/tags/evicted/</link>
+      <pubDate>Fri, 01 Jul 2022 09:47:31 +0800</pubDate>
+      
+      <guid>https://lanqiu.tech/tags/evicted/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>k8s</title>
+      <link>https://lanqiu.tech/tags/k8s/</link>
+      <pubDate>Fri, 01 Jul 2022 09:47:31 +0800</pubDate>
+      
+      <guid>https://lanqiu.tech/tags/k8s/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes</title>
+      <link>https://lanqiu.tech/tags/kubernetes/</link>
+      <pubDate>Fri, 01 Jul 2022 09:47:31 +0800</pubDate>
+      
+      <guid>https://lanqiu.tech/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>GPU</title>
       <link>https://lanqiu.tech/tags/gpu/</link>
@@ -58,15 +85,6 @@
       <pubDate>Thu, 24 Feb 2022 15:39:20 +0800</pubDate>
       
       <guid>https://lanqiu.tech/tags/k3s/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>kubernetes</title>
-      <link>https://lanqiu.tech/tags/kubernetes/</link>
-      <pubDate>Thu, 24 Feb 2022 15:39:20 +0800</pubDate>
-      
-      <guid>https://lanqiu.tech/tags/kubernetes/</guid>
       <description></description>
     </item>
     

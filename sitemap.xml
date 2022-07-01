@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://lanqiu.tech/categories/</loc>
+    <lastmod>2022-07-01T09:47:31+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/tags/evicted/</loc>
+    <lastmod>2022-07-01T09:47:31+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/tags/k8s/</loc>
+    <lastmod>2022-07-01T09:47:31+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/categories/k8s/</loc>
+    <lastmod>2022-07-01T09:47:31+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/posts/delete_evicted_pod/</loc>
+    <lastmod>2022-07-01T09:47:31+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/tags/kubernetes/</loc>
+    <lastmod>2022-07-01T09:47:31+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/posts/</loc>
+    <lastmod>2022-07-01T09:47:31+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/tags/</loc>
+    <lastmod>2022-07-01T09:47:31+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/</loc>
+    <lastmod>2022-07-01T09:47:31+08:00</lastmod>
+  </url><url>
     <loc>https://lanqiu.tech/tags/gpu/</loc>
     <lastmod>2022-06-24T11:30:53+08:00</lastmod>
   </url><url>
@@ -10,18 +37,6 @@
   </url><url>
     <loc>https://lanqiu.tech/posts/nvml_driver_version_mismatch/</loc>
     <lastmod>2022-06-24T11:30:53+08:00</lastmod>
-  </url><url>
-    <loc>https://lanqiu.tech/posts/</loc>
-    <lastmod>2022-06-24T11:30:53+08:00</lastmod>
-  </url><url>
-    <loc>https://lanqiu.tech/tags/</loc>
-    <lastmod>2022-06-24T11:30:53+08:00</lastmod>
-  </url><url>
-    <loc>https://lanqiu.tech/</loc>
-    <lastmod>2022-06-24T11:30:53+08:00</lastmod>
-  </url><url>
-    <loc>https://lanqiu.tech/categories/</loc>
-    <lastmod>2022-03-12T15:24:45+08:00</lastmod>
   </url><url>
     <loc>https://lanqiu.tech/categories/proxy/</loc>
     <lastmod>2022-03-12T15:24:45+08:00</lastmod>
@@ -42,9 +57,6 @@
     <lastmod>2022-03-12T15:24:45+08:00</lastmod>
   </url><url>
     <loc>https://lanqiu.tech/tags/k3s/</loc>
-    <lastmod>2022-02-24T15:39:20+08:00</lastmod>
-  </url><url>
-    <loc>https://lanqiu.tech/tags/kubernetes/</loc>
     <lastmod>2022-02-24T15:39:20+08:00</lastmod>
   </url><url>
     <loc>https://lanqiu.tech/tags/monitor/</loc>
