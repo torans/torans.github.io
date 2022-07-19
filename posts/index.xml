@@ -6,7 +6,17 @@
     <description>Recent content in Posts on 兰秋十六</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
-    <lastBuildDate>Fri, 01 Jul 2022 09:47:31 +0800</lastBuildDate><atom:link href="https://lanqiu.tech/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 19 Jul 2022 16:08:20 +0800</lastBuildDate><atom:link href="https://lanqiu.tech/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>《精通以太坊——实现数字合约》中文版</title>
+      <link>https://lanqiu.tech/posts/ethereum_book/</link>
+      <pubDate>Tue, 19 Jul 2022 16:08:20 +0800</pubDate>
+      
+      <guid>https://lanqiu.tech/posts/ethereum_book/</guid>
+      <description>
+前言 术语 第一章 什么是以太坊 第二章 以太坊基础 第三章 以太坊客户端 第四章 以太坊测试网 第五章 密钥和地址 第六章 钱包 第七章 交易 第八章 智能合约 第九章 开发工具，框架和库 第十章 代币（Tokens） 第十一章 去中心化应用（DApps） 第十二章 预言机（Oracles） 第十三章 燃气（Gas） 第十四章 以太坊虚拟机 第十五章 共识 第十六章 Vyper：面向合约的编程语言 第十七章 DevP2P协议 第十八章 以太坊标准 第十九章 以太坊分叉历史 </description>
+    </item>
+    
     <item>
       <title>K8S删除状态为Evicted的Pod</title>
       <link>https://lanqiu.tech/posts/delete_evicted_pod/</link>
