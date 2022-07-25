@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Lan Qiu on 兰秋十六</title>
-    <link>https://lanqiu.tech/authors/lan-qiu/</link>
-    <description>Recent content in Lan Qiu on 兰秋十六</description>
+    <title>Fleek on 兰秋十六</title>
+    <link>https://lanqiu.tech/tags/fleek/</link>
+    <description>Recent content in Fleek on 兰秋十六</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
-    <lastBuildDate>Mon, 25 Jul 2022 17:23:30 +0800</lastBuildDate><atom:link href="https://lanqiu.tech/authors/lan-qiu/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 25 Jul 2022 17:23:30 +0800</lastBuildDate><atom:link href="https://lanqiu.tech/tags/fleek/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>本博客正式迁移至IPFS去中心化网络</title>
       <link>https://lanqiu.tech/posts/deploy_blog_on_ipfs/</link>
