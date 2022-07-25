@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>区块链 on 兰秋十六</title>
-    <link>https://lanqiu.tech/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/</link>
-    <description>Recent content in 区块链 on 兰秋十六</description>
+    <title>FIL&#43; on 兰秋十六</title>
+    <link>https://lanqiu.tech/tags/fil&#43;/</link>
+    <description>Recent content in FIL&#43; on 兰秋十六</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
-    <lastBuildDate>Wed, 20 Jul 2022 16:19:53 +0800</lastBuildDate><atom:link href="https://lanqiu.tech/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 20 Jul 2022 16:19:53 +0800</lastBuildDate><atom:link href="https://lanqiu.tech/tags/fil+/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Filecoin Plus 公证人申请模板</title>
       <link>https://lanqiu.tech/posts/filecoin_plus_notary_application_template/</link>
@@ -15,16 +15,6 @@
       <guid>https://lanqiu.tech/posts/filecoin_plus_notary_application_template/</guid>
       <description>Notary Application To apply to be a Fil+ Notary, please review the Notary Overview here and then fill out the following form.
 Core Information Name: Beta Technology Affiliated organization: Guizhou Beta Technology Co., Ltd.(Chinese Name:贵州贝塔科技有限公司, Used name: 贵州矿无界科技有限公司) On-chain address to be notarized (recommend using a new address): f17shx7z7536ecsj5gqcpnnp3sby2t47p7o7hsloa Region of Operation: Greater China Use case(s) to be supported: Professional Services, Web 3.0 / Decentralized Applications, Web 2.0 Applications, Scientific Data, Media &amp;amp; Entertainment DataCap requested for allocation (10TiB - 10 PiB): 1PiB Please respond to the questions below in paragraph form, replacing the text saying &amp;ldquo;Please answer here&amp;rdquo;.</description>
-    </item>
-    
-    <item>
-      <title>《精通以太坊——实现数字合约》中文版</title>
-      <link>https://lanqiu.tech/posts/ethereum_book/</link>
-      <pubDate>Tue, 19 Jul 2022 16:08:20 +0800</pubDate>
-      
-      <guid>https://lanqiu.tech/posts/ethereum_book/</guid>
-      <description>
-前言 术语 第一章 什么是以太坊 第二章 以太坊基础 第三章 以太坊客户端 第四章 以太坊测试网 第五章 密钥和地址 第六章 钱包 第七章 交易 第八章 智能合约 第九章 开发工具，框架和库 第十章 代币（Tokens） 第十一章 去中心化应用（DApps） 第十二章 预言机（Oracles） 第十三章 燃气（Gas） 第十四章 以太坊虚拟机 第十五章 共识 第十六章 Vyper：面向合约的编程语言 第十七章 DevP2P协议 第十八章 以太坊标准 第十九章 以太坊分叉历史 </description>
     </item>
     
   </channel>
