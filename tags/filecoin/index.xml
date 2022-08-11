@@ -19,5 +19,15 @@
 扇区类型 (1TB存储空间) 有效算力(QAP) 日均收益(FIL) 需要质押FIL数 质押回本天数(质押/日收益) 目前CC 1*1=1TB 0.0154 5.6 363 目前DC 1*10=10TB 0.154(10倍) 56(10倍) 363 新版CC+存1年 1*2=2TB 0.0308(2倍) 14.78(2.6倍) 479 新版DC+存1年 1210=20TB 0.308(20倍) 147.8(26倍) 479 新版CC+存5年 1*10=10TB 0.154(10倍) 73.9(13.2倍) 479 新版DC+存5年 11010=100TB 1.</description>
     </item>
     
+    <item>
+      <title>Filecoin大数据集申请模板示例</title>
+      <link>https://lanqiu.tech/posts/large_dataset_notary_application/</link>
+      <pubDate>Mon, 01 Aug 2022 15:35:26 +0800</pubDate>
+      
+      <guid>https://lanqiu.tech/posts/large_dataset_notary_application/</guid>
+      <description>Large Dataset Notary Application To apply for DataCap to onboard your dataset to Filecoin, please fill out the following.
+Core Information Organization Name: Beta Technology Website / Social Media: http://www.betalink.info/ Total amount of DataCap being requested (between 500 TiB and 5 PiB): 1PiB Weekly allocation of DataCap requested (usually between 1-100TiB): 100TiB On-chain address for first allocation: f17shx7z7536ecsj5gqcpnnp3sby2t47p7o7hsloa Please respond to the questions below by replacing the text saying &amp;ldquo;Please answer here&amp;rdquo;.</description>
+    </item>
+    
   </channel>
 </rss>

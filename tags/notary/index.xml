@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>notary on 兰秋十六</title>
+    <link>https://lanqiu.tech/tags/notary/</link>
+    <description>Recent content in notary on 兰秋十六</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>cn</language>
+    <lastBuildDate>Mon, 01 Aug 2022 15:35:26 +0800</lastBuildDate><atom:link href="https://lanqiu.tech/tags/notary/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Filecoin大数据集申请模板示例</title>
+      <link>https://lanqiu.tech/posts/large_dataset_notary_application/</link>
+      <pubDate>Mon, 01 Aug 2022 15:35:26 +0800</pubDate>
+      
+      <guid>https://lanqiu.tech/posts/large_dataset_notary_application/</guid>
+      <description>Large Dataset Notary Application To apply for DataCap to onboard your dataset to Filecoin, please fill out the following.
+Core Information Organization Name: Beta Technology Website / Social Media: http://www.betalink.info/ Total amount of DataCap being requested (between 500 TiB and 5 PiB): 1PiB Weekly allocation of DataCap requested (usually between 1-100TiB): 100TiB On-chain address for first allocation: f17shx7z7536ecsj5gqcpnnp3sby2t47p7o7hsloa Please respond to the questions below by replacing the text saying &amp;ldquo;Please answer here&amp;rdquo;.</description>
+    </item>
+    
+  </channel>
+</rss>
