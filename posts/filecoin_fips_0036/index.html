@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="cn">
+    <meta name="color-scheme" content="light dark">
+
+    
+      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; block-all-mixed-content; default-src 'self'; child-src 'self'; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net/; form-action 'self'; frame-src 'self'; img-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/ https://cdn.jsdelivr.net/; script-src 'self' 'unsafe-inline' https://www.google-analytics.com https://cdn.jsdelivr.net/; prefetch-src 'self'; connect-src 'self' https://www.google-analytics.com;">
+
+    
+
+    <meta name="author" content="Lan Qiu">
+    <meta name="description" content="有关Filecoin挖矿100倍算力草案见解">
+    <meta name="keywords" content="兰秋，兰秋十六，lanqiu">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="有关Filecoin挖矿100倍算力草案见解"/>
+<meta name="twitter:description" content="有关Filecoin挖矿100倍算力草案见解"/>
+
+    <meta property="og:title" content="有关Filecoin挖矿100倍算力草案见解" />
+<meta property="og:description" content="有关Filecoin挖矿100倍算力草案见解" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lanqiu.tech/posts/filecoin_fips_0036/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-08-11T14:26:46+08:00" />
+<meta property="article:modified_time" content="2022-08-11T14:26:46+08:00" />
+
+
+
+    <title>
+  有关Filecoin挖矿100倍算力草案见解 · 兰秋十六
+</title>
+
+    
+      <link rel="canonical" href="https://lanqiu.tech/posts/filecoin_fips_0036/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.d9fddbffe6f27e69985dc5fe0471cdb0e57fbf4775714bc3d847accb08f4a1f6.css" integrity="sha256-2f3b/&#43;byfmmYXcX&#43;BHHNsOV/v0d1cUvD2Eesywj0ofY=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.002ee2378e14c7a68f1f0a53d9694ed252090987c4e768023fac694a4fc5f793.css" integrity="sha256-AC7iN44Ux6aPHwpT2WlO0lIJCYfE52gCP6xpSk/F95M=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.100.1" />
+  </head>
+
+  
+  
+    
+  
+  <body class="preload-transitions colorscheme-auto">
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      <span style="font-weight: bold;font-family: arial black, arial, sans-serif;font-style: italic;">
+        <font style="vertical-align: inherit;font-size: 28px">LAN QIU</font>
+    </span>
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/">HOME</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">POSTS</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/tags/">TAGS</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/archive/">ARCHIVE</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/works/">OTHER</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">ABOUT</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://lanqiu.tech/posts/filecoin_fips_0036/">
+              有关Filecoin挖矿100倍算力草案见解
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2022-08-11T14:26:46&#43;08:00'>
+                August 11, 2022
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              
+            </span>
+          </div>
+          <div class="authors">
+  <i class="fa fa-user" aria-hidden="true"></i>
+    <a href="/authors/lanqiu/">Lanqiu</a></div>
+
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/filecoin/">filecoin</a>
+      <span class="separator">•</span>
+    <a href="/categories/blockchain/">blockchain</a></div>
+
+          
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h3 id="今日币价">
+  今日币价
+  <a class="heading-link" href="#%e4%bb%8a%e6%97%a5%e5%b8%81%e4%bb%b7">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<table>
+<thead>
+<tr>
+<th>FIL</th>
+<th>ETH</th>
+<th>BTC</th>
+<th>SHIB</th>
+<th>BNB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$8.8</td>
+<td>$18,89.75</td>
+<td>$24,566.02</td>
+<td>$0.0000125</td>
+<td>$332.7</td>
+</tr>
+</tbody>
+</table>
+<h3 id="提案内容摘要">
+  <strong>提案内容摘要</strong>
+  <a class="heading-link" href="#%e6%8f%90%e6%a1%88%e5%86%85%e5%ae%b9%e6%91%98%e8%a6%81">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<ul>
+<li>为所有扇区引入了扇区持续时间乘数，包括承诺容量扇区和包含存储交易的扇区<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>。</li>
+<li>在所有条件相同的情况下，较长的扇区将比较短的扇区具有更高的质量调整功率。</li>
+<li>持续时间乘数与现有的质量乘数激励（Filecoin Plus 激励）相乘。</li>
+<li>由于持续时间乘数和质量乘数而具有更高质量算力（QAP），将需要更高的初始质押抵押品。</li>
+<li>最短扇区持续时间将增加到 1 年，最长扇区持续时间将增加到 5 年。</li>
+<li>SectorInitialConsensusPledge 乘数将从 30% 增加到 40%。</li>
+<li>该政策将适用于扇区升级和扩展。</li>
+</ul>
+<h3 id="目的">
+  <strong>目的</strong>
+  <a class="heading-link" href="#%e7%9b%ae%e7%9a%84">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>鼓励SP存的更久、质押更多FIL进主网， 让FIL整体通缩。</p>
+<h3 id="扇区周期乘数图">
+  <strong>扇区周期乘数图</strong>
+  <a class="heading-link" href="#%e6%89%87%e5%8c%ba%e5%91%a8%e6%9c%9f%e4%b9%98%e6%95%b0%e5%9b%be">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p><img src="https://lanqiu16.oss-cn-chengdu.aliyuncs.com/uPic/om3MvJ.jpg" alt="om3MvJ"></p>
+<p>在投入硬件成本相同的情况(1TB存储空间)下, 不同的扇区类型和周期, 带来收益和质押变化.</p>
+<p>(CC代表存垃圾数据,DC代表存真数数据的扇区)</p>
+<h3 id="扇区类型">
+  <strong>扇区类型</strong>
+  <a class="heading-link" href="#%e6%89%87%e5%8c%ba%e7%b1%bb%e5%9e%8b">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<table>
+<thead>
+<tr>
+<th>(1TB存储空间)</th>
+<th>有效算力(QAP)</th>
+<th>日均收益(FIL)</th>
+<th style="text-align:left">需要质押FIL数</th>
+<th style="text-align:center">质押回本天数(质押/日收益)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>目前CC</td>
+<td>1*1=1TB</td>
+<td>0.0154</td>
+<td style="text-align:left">5.6</td>
+<td style="text-align:center">363</td>
+</tr>
+<tr>
+<td>目前DC</td>
+<td>1*10=10TB</td>
+<td>0.154(10倍)</td>
+<td style="text-align:left">56(10倍)</td>
+<td style="text-align:center">363</td>
+</tr>
+<tr>
+<td>新版CC+存1年</td>
+<td>1*2=2TB</td>
+<td>0.0308(2倍)</td>
+<td style="text-align:left">14.78(2.6倍)</td>
+<td style="text-align:center">479</td>
+</tr>
+<tr>
+<td>新版DC+存1年</td>
+<td>1<em>2</em>10=20TB</td>
+<td>0.308(20倍)</td>
+<td style="text-align:left">147.8(26倍)</td>
+<td style="text-align:center">479</td>
+</tr>
+<tr>
+<td>新版CC+存5年</td>
+<td>1*10=10TB</td>
+<td>0.154(10倍)</td>
+<td style="text-align:left">73.9(13.2倍)</td>
+<td style="text-align:center">479</td>
+</tr>
+<tr>
+<td>新版DC+存5年</td>
+<td>1<em>10</em>10=100TB</td>
+<td>1.54(100倍)</td>
+<td style="text-align:left">739(132倍)</td>
+<td style="text-align:center">479</td>
+</tr>
+</tbody>
+</table>
+<h3 id="总结">
+  <strong>总结</strong>
+  <a class="heading-link" href="#%e6%80%bb%e7%bb%93">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<ol>
+<li>省存储空间， 进入门槛降低， 小机器即可获得大算力，有利于新进入SP。</li>
+<li>质押变高， 相同的算力整体锁仓更多(多13%)， 流通量变小。</li>
+<li>激励存更久的SP， 对FIL主网来说有更多的长期锁仓，质押释放压力变小。</li>
+<li>对于存长周期+存真实数据的人来说， 存储成本可以忽略不计 ， 主要是质押成本。</li>
+<li>为了获得竞争力， SP倾向选择存长期(5年)， 尤其是在币价低的时候， 等于小投入高回报， 前提是看好FIL未来的价格， 这样的话质押增量会比原来多， 买设备的钱全部用来买质押， 币价上涨。</li>
+</ol>
+<p>假设FIL币价$10， 1P算力存DC数据 5年，需要封装50T真数数据， 用到质押 7390=$73900。5年FIL收益为：1.54  * 10  * 365  * 5 =   28105(FIL).</p>
+<h3 id="讨论">
+  <strong>讨论</strong>
+  <a class="heading-link" href="#%e8%ae%a8%e8%ae%ba">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<h4 id="sp">
+  SP:
+  <a class="heading-link" href="#sp">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<ul>
+<li>都x2斜率对部分SP不公平，如正在CC扇区的原始算力SP</li>
+<li>需要承担更高的质押压力，会迫使一部分SP退出</li>
+<li>认为官方玩数字游戏，都封装承诺5年的扇区，对于SP们来说FIL购买力没有变化</li>
+<li>存时间短的会被淘汰，而能存5年的客户数据并不多，反而对生态不利</li>
+</ul>
+<h4 id="官方">
+  官方:
+  <a class="heading-link" href="#%e5%ae%98%e6%96%b9">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<ul>
+<li>有利于节省存储攻坚，降低门槛，吸引更多的SP</li>
+<li>激励储存是假更长的SP</li>
+<li>鼓励长时间存储</li>
+</ul>
+<p>目前提案还在修改中， 还没落地， 目前的数据仅供参考。 为了避免过于激进， 总体来看， 如果实行此策略， 可能会引发质押潮。</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://github.com/filecoin-project/FIPs/blob/master/FIPS/fip-0036.md">ntroducing a Sector Duration Multiple for Longer Term Sector Commitment</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+
+    <span style="font-weight: bold;font-family: arial black, arial, sans-serif;font-style: italic;">
+        <font style="vertical-align: inherit;font-size: 10px">
+           ©
+    
+    2022. &nbsp;
+          DEPLOYED ON IPFS
+        </font>
+    </span>
+    
+
+
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.faf284b268283ca4c276087ba3ee2dc8bd9c8e95dde688c2f16efaa82c4884be.js" integrity="sha256-&#43;vKEsmgoPKTCdgh7o&#43;4tyL2cjpXd5ojC8W76qCxIhL4="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>
