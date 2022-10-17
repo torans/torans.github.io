@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="cn">
+    <meta name="color-scheme" content="light dark">
+
+    
+      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; block-all-mixed-content; default-src 'self'; child-src 'self'; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net/; form-action 'self'; frame-src 'self'; img-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/ https://cdn.jsdelivr.net/; script-src 'self' 'unsafe-inline' https://www.google-analytics.com https://cdn.jsdelivr.net/; prefetch-src 'self'; connect-src 'self' https://www.google-analytics.com;">
+
+    
+
+    <meta name="author" content="Lan Qiu">
+    <meta name="description" content="实现Web3的核心要素：区块链、加密资产、智能合约和预言机">
+    <meta name="keywords" content="兰秋，兰秋十六，lanqiu">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="实现Web3的核心要素：区块链、加密资产、智能合约和预言机"/>
+<meta name="twitter:description" content="实现Web3的核心要素：区块链、加密资产、智能合约和预言机"/>
+
+    <meta property="og:title" content="实现Web3的核心要素：区块链、加密资产、智能合约和预言机" />
+<meta property="og:description" content="实现Web3的核心要素：区块链、加密资产、智能合约和预言机" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lanqiu.tech/posts/the-core-elements-of-web3/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-17T11:09:30+08:00" />
+<meta property="article:modified_time" content="2022-10-17T11:09:30+08:00" />
+
+
+
+    <title>
+  实现Web3的核心要素：区块链、加密资产、智能合约和预言机 · 兰秋十六
+</title>
+
+    
+      <link rel="canonical" href="https://lanqiu.tech/posts/the-core-elements-of-web3/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.d9fddbffe6f27e69985dc5fe0471cdb0e57fbf4775714bc3d847accb08f4a1f6.css" integrity="sha256-2f3b/&#43;byfmmYXcX&#43;BHHNsOV/v0d1cUvD2Eesywj0ofY=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.002ee2378e14c7a68f1f0a53d9694ed252090987c4e768023fac694a4fc5f793.css" integrity="sha256-AC7iN44Ux6aPHwpT2WlO0lIJCYfE52gCP6xpSk/F95M=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.100.1" />
+  </head>
+
+  
+  
+    
+  
+  <body class="preload-transitions colorscheme-auto">
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      <span style="font-weight: bold;font-family: arial black, arial, sans-serif;font-style: italic;">
+        <font style="vertical-align: inherit;font-size: 28px">LAN QIU</font>
+    </span>
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/">HOME</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">POSTS</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/tags/">TAGS</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/archive/">ARCHIVE</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/works/">OTHER</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">ABOUT</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://lanqiu.tech/posts/the-core-elements-of-web3/">
+              实现Web3的核心要素：区块链、加密资产、智能合约和预言机
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2022-10-17T11:09:30&#43;08:00'>
+                October 17, 2022
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/blockchain/">blockchain</a>
+      <span class="separator">•</span>
+    <a href="/categories/web3/">web3</a></div>
+
+          
+
+        </div>
+      </header>
+
+      <div>
+        
+        <p>Web3的核心要素：区块链、加密资产、智能合约和预言机</p>
+<p>Web3模式的去中心化技术栈不断发展壮大，涵盖区块链、智能合约、预言机、加密钱包以及存储网络等各种技术。下文将详细阐述Web3技术栈的关键构成要素。</p>
+<h3 id="区块链">
+  区块链
+  <a class="heading-link" href="#%e5%8c%ba%e5%9d%97%e9%93%be">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>区块链是安全性和去中心化水平都极高的网络，人们可以在一个共享账本中储存数据、交换价值并记录交易活动，而且这个账本不受任何中心化实体控制。区块链网络是Web3的支柱，提供了安全的执行层，可以在其中创建、发行并交易加密资产，并且开发可编程的智能合约。区块链是Web3的结算层。</p>
+<h3 id="加密资产">
+  加密资产
+  <a class="heading-link" href="#%e5%8a%a0%e5%af%86%e8%b5%84%e4%ba%a7">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>加密资产是数字通证，利用了去中心化且防篡改的区块链网络环境，充分保障了交易的安全性。加密资产是Web3去中心化应用（dApp）的原生货币，也可以用于支付Web3服务并参与Web3治理。</p>
+<p>在区块链技术出现以前，通证往往指用来购买和交易产品或服务的价值单位，比如高速公路收费站的通行证、游乐园的门票和游戏代币。在这些早期用例中，服务提供方通过发放通证，让用户直接提前支付服务费用。</p>
+<p>Web3应用中的通证也是发放给Web3内容创作者的价值单位，但区别是这些价值单位是以数字化且可编程的形式存在的，而且其功能远不止价值交换。在Web3中，通证可以表示对某一协议、项目或区块链的投资。通证也可以在这个项目或协议中用来支付或保障服务。另外，通证还可以让持有者参与到协议或项目的治理。</p>
+<h3 id="智能合约和去中心化应用dapp">
+  智能合约和去中心化应用（dApp）
+  <a class="heading-link" href="#%e6%99%ba%e8%83%bd%e5%90%88%e7%ba%a6%e5%92%8c%e5%8e%bb%e4%b8%ad%e5%bf%83%e5%8c%96%e5%ba%94%e7%94%a8dapp">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>智能合约是区块链上不可篡改的程序，利用“如果x是真实的，则执行y”的代码逻辑自动执行交易。可编程的智能合约可以创建去中心化的应用，或者叫“dApp”。去中心化应用是基于加密经济的协议，为Web3的发展奠定了基础，并将Web3交付到了用户手中。</p>
+<p>dApp与Web 2.0的应用以及Web 1.0的静态HTML网页不一样，它们不由任何一个人或组织运行，而是由去中心化的区块链网络运行。去中心化应用看似简单，但却能够打造出点对点金融服务（DeFi）、数据驱动的保险产品以及P2E游戏等非常复杂的自动化系统。</p>
+<h3 id="预言机">
+  预言机
+  <a class="heading-link" href="#%e9%a2%84%e8%a8%80%e6%9c%ba">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>智能合约要充分实现其潜力，就必须能够与区块链网络以外的数据和系统交互。预言机能够将区块链连接至真实世界中的数据和系统，并提供关键的基础架构，打造一个具有互操作性且统一的Web3生态。</p>
+<p>Chainlink预言机网络不仅能够为DeFi应用传输金融市场数据，还能够执行一系列安全的链下计算，比如可验证的随机数和去中心化执行，以最终实现动态NFT以及自动化水平极高的dApp。另外，随着跨链互操作性协议（CCIP）的不断发展，预言机网络将连接各个快速发展的区块链生态和L2扩容方案，使其安全地实现交互。</p>
+<p>预言机对Web3技术栈进行了扩充，传输链下数据和服务，以推动智能合约创新；实现跨链互操作性，以确保各条区块链无缝连接。Chainlink的预言机基础架构也为Web 2.0后端系统进入Web3世界提供了入口，为传统系统提供抽象层，轻松接入任何公链和私有链。最终，预言机将为传统系统带来去中心化计算和加密保障，并在Web 2.0和Web3之间搭建桥梁。</p>
+<p>Web3由去中心化的计算网络组成，这些网络通过Chainlink预言机连接。</p>
+<p>Web3的应用</p>
+<p>Web3兼具去中心化和交互性，打造了一个全新的互联网模式。在其中，用户可以绕过中介直接交互。dApp用户无需许可即可访问金融工具，以点对点的方式交易加密资产，获得参数型保险理赔，通过NFT交易可验证所有权的数字艺术品，并且在游戏中赚钱。所有这些活动都可以完全绕过中间方直接展开。</p>
+<p>Web3的建设者希望通过这个创新的架构，打造出更加公平和开放的互联网，用户可以在其中直接展开交互和交易。目前，采用了区块链、智能合约和去中心化预言机网络这三种核心技术的Web3应用已经实现了丰富的用例，颠覆了房地产、教育、金融、游戏和医疗等各个行业，并势必在未来将颠覆更多其他行业。</p>
+<p>去中心化金融</p>
+<p>Web3技术让个人可以创建并参与金融协议，并实现了前所未有的包容性、安全性和透明性。这种创新的经济模式还有一个广为人知的名字，那就是去中心化金融（DeFi）。</p>
+<p>DeFi协议与传统金融服务不同，利用了去中心化的区块链基础设施以及预言机安全的数据输入，帮助用户在透明且防篡改的链上市场中直接交易。用去中心化的货币市场Aave举个例子：Aave集成了Chainlink预言机后为智能合约保障了超过120亿美元的价值。协议采用了非托管的模式，其用户可以点对点地进行借贷。货币市场是经济健康运行的关键支柱。链上货币市场将控制权去中心化，并且利用了预定义的智能合约逻辑，能够降低参与门槛和单点失效风险，并避免系统性风险和储备金不足的情况。</p>
+<p>DeFi最大的一个创新就是可组合性。开发者可以将不同的开源协议组合成一个更加复杂的金融工具，比如利用超额抵押贷款协议打造无损储蓄游戏、开发去中心化stablecoin以及盘活闲置资金生成利息收益。</p>
+<p>DeFi的创新金融应用是目前Web3最引人注目的发展，然而Web3远不止金融交易，还包括互联网世界中从娱乐到社交媒体再到浏览器等各个领域。</p>
+<p>NFT、游戏和元宇宙</p>
+<p>NFT、区块链游戏和元宇宙（metaverse）是Web3生态中异军突起的力量。NFT为数字资产提供了可验证的所有权，让这些数字商品拥有与实物资产同样的独特性。有了NFT，数字资产即使外观一模一样，也可以互相区分开来，这就像现实世界中两本一模一样的书可以通过它们各自独特的标记和磨损痕迹区分开来。</p>
+<p>这对于数字艺术品、元宇宙应用和游戏来说意义重大。目前，Bored Ape Yacht Club（BAYC）等NFT项目正在不断推广NFT和数字艺术品；而Axie Infinity等区块链游戏也在逐渐颠覆传统游戏行业的玩家经济模式。实现这一转型在本质上需要区块链提供底层结算层、NFT智能合约提供可验证的艺术品所有权以及去中心化的预言机提供可验证的随机数、智能合约自动化和链下数据等关键服务。</p>
+<p>参数型保险</p>
+<p>去中心化参数型保险是区块链另一个有意思的用例。Arbol和Etherisc等区块链保险项目目前正在采用创新的模式，通过Chainlink Data Feeds将智能合约接入链下数据，为用户提供自动化的农作物保险和航班保险等各类创新保险产品。我们来看一个案例：</p>
+<p>假设某一季节中的降雨量必须超过20英寸，才能保障农作物不欠收。一个农民希望买保险来对冲恶劣天气造成的不利影响。通常，他必须要经过漫长的理赔流程，并且要依靠中心化的保险机构来核实降雨量。</p>
+<p>然而在Web3的世界里，无论你在什么地方，只要能上网，都能轻松买到保险。有了Arbol的链上农作物保险，保费和赔偿金额都会基于预定义的参数自动生成，并且会基于Chainlink提供的天气数据，通过保险智能合约自动支付赔偿金。因此，保险流程会非常高效迅速，并基于简单的二元逻辑判断农民是否应获得理赔。物联网传感器在当季记录的降雨量是否低于20英寸？如果是，则立即支付赔偿金给农民。如果否，则不支付赔偿金给农民。</p>
+<p>这个模式还可以应用于航运险和火灾险等其他领域，而区块链参数保险目前已经应用在了参数型航班保险中。</p>
+<p>Web3的未来将如何发展？</p>
+<p>Chainlink的联合创始人Sergey Nazarov在近期关于Chainlink未来发展的演讲中提到，Web3生态的大趋势已经形成，并且在近期进入了主流视野：“如今Web3的应用场景覆盖了DeFi、NFT和通证化所有权这几个领域，但是这一切才刚开始。现在仍是加密技术发展的初期，之后这项技术会渗透至人们日常生活的方方面面以及所有行业的各个角落。”</p>
+<p>随着大家逐渐意识到加密技术的力量，它们将抛弃缺乏确定性的中心化服务提供方，转而拥抱信任最小化的Web3服务。</p>
+<p>Web3这个词实际上指代了基于去中心化技术的新型互联网体验。而Web3已经开始颠覆我们在投资、交易、游戏和艺术等各个领域的交互方式。全球各地有越来越多的用户和机构已经开始意识到无须信任的交互和基于加密技术保障的协议是多么重要。虽然Web3仍处于发展初期，但它有潜力将互联网恢复成当初设计者所希望的那样：完全透明、可靠且易于使用。Sergey在演讲中说道：“Web3在速度、效率和成本上将逐渐赶上Web 2.0系统，并且它还具有Web 2.0没有的优势，那就是信任最小化的加密保障。”</p>
+<p>文章来源：https://new.qq.com/rain/a/20220907A04Q0J00</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+
+    <span style="font-weight: bold;font-family: arial black, arial, sans-serif;font-style: italic;">
+        <font style="vertical-align: inherit;font-size: 10px">
+           ©
+    
+    2022. &nbsp;
+          DEPLOYED ON IPFS
+        </font>
+    </span>
+    
+
+
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.faf284b268283ca4c276087ba3ee2dc8bd9c8e95dde688c2f16efaa82c4884be.js" integrity="sha256-&#43;vKEsmgoPKTCdgh7o&#43;4tyL2cjpXd5ojC8W76qCxIhL4="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

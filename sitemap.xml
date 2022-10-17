@@ -2,10 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://lanqiu.tech/authors/</loc>
-    <lastmod>2022-07-25T17:23:30+08:00</lastmod>
+    <loc>https://lanqiu.tech/categories/blockchain/</loc>
+    <lastmod>2022-10-17T11:09:30+08:00</lastmod>
   </url><url>
     <loc>https://lanqiu.tech/categories/</loc>
+    <lastmod>2022-10-17T11:09:30+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/posts/</loc>
+    <lastmod>2022-10-17T11:09:30+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/tags/</loc>
+    <lastmod>2022-10-17T11:09:30+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/tags/web3/</loc>
+    <lastmod>2022-10-17T11:09:30+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/categories/web3/</loc>
+    <lastmod>2022-10-17T11:09:30+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/</loc>
+    <lastmod>2022-10-17T11:09:30+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/posts/the-core-elements-of-web3/</loc>
+    <lastmod>2022-10-17T11:09:30+08:00</lastmod>
+  </url><url>
+    <loc>https://lanqiu.tech/authors/</loc>
     <lastmod>2022-07-25T17:23:30+08:00</lastmod>
   </url><url>
     <loc>https://lanqiu.tech/tags/fleek/</loc>
@@ -15,15 +36,6 @@
     <lastmod>2022-07-25T17:23:30+08:00</lastmod>
   </url><url>
     <loc>https://lanqiu.tech/authors/lan-qiu/</loc>
-    <lastmod>2022-07-25T17:23:30+08:00</lastmod>
-  </url><url>
-    <loc>https://lanqiu.tech/posts/</loc>
-    <lastmod>2022-07-25T17:23:30+08:00</lastmod>
-  </url><url>
-    <loc>https://lanqiu.tech/tags/</loc>
-    <lastmod>2022-07-25T17:23:30+08:00</lastmod>
-  </url><url>
-    <loc>https://lanqiu.tech/</loc>
     <lastmod>2022-07-25T17:23:30+08:00</lastmod>
   </url><url>
     <loc>https://lanqiu.tech/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/</loc>
